@@ -32,7 +32,9 @@ import { LoginComponent } from './auth/login/login.component';
 // angular material
 import {
   MatToolbarModule,
-  MatIconModule
+  MatIconModule,
+  MatFormFieldModule,
+  MatInputModule
 } from '@angular/material';
 
 @NgModule({
@@ -57,7 +59,9 @@ import {
     BrowserAnimationsModule,
     // material
     MatToolbarModule,
-    MatIconModule
+    MatIconModule,
+    MatFormFieldModule,
+    MatInputModule
   ],
   providers: [],
   bootstrap: [
