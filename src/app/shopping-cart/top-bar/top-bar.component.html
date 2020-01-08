@@ -1,9 +1,22 @@
-<a [routerLink]="['/']">
-  <h1>Login</h1>
-</a>
+<mat-toolbar color="primary">
+  <mat-toolbar-row>
+  	<button mat-button [matMenuTriggerFor]="menu">NG-CHAT</button>
+	<mat-menu #menu="matMenu">
+	  <button mat-menu-item [routerLink]="['/']">LOGIN</button>
+	</mat-menu>
+
+    <span class="example-spacer"></span>
+
+    <button mat-button [routerLink]="['cart']">
+		<a><i class="material-icons">shopping_cart</i>Checkout</a>
+	</button>
+  </mat-toolbar-row>
+</mat-toolbar>
+
+<!-- https://stackoverflow.com/questions/43200545/create-a-responsive-toolbar-using-angular-material -->
 
 <a [routerLink]="['/shopping_cart']">
   <h1>My Store</h1>
 </a>
 
-<a [routerLink]="['cart']" class="button fancy-button"><i class="material-icons">shopping_cart</i>Checkout</a>
+

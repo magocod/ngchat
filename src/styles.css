@@ -1,4 +1,18 @@
 /* You can add global styles to this file, and also import other style files */
 
 /*@import "./styles/css/materialize.css";*/
-@import "./styles/css/custom.css"; 
+/*@import "./styles/css/custom.css";*/
+
+@import '@angular/material/prebuilt-themes/deeppurple-amber.css';
+
+body{
+    margin: 0%;
+}
+
+.example-icon {
+  padding: 0 14px;
+}
+
+.example-spacer {
+  flex: 1 1 auto;
+}

@@ -7,9 +7,9 @@
   flex-direction: row;
 }
 
-router-outlet + *  {
+/*router-outlet + *  {
   padding: 0 16px;
-}
+}*/
 
 /* Text */
 
