@@ -1,5 +1,5 @@
 import { NgModule } from '@angular/core';
-import { Routes, RouterModule } from '@angular/router';
+import { Routes, RouterModule, PreloadAllModules } from '@angular/router';
 
 import { LoginComponent } from 'src/app/auth/login/login.component';
 
@@ -27,29 +27,25 @@ const routes: Routes = [
 			{ path: '', component: ChatDashboardComponent },
 		]
 	},
-	{
+	{ 
 		path: 'shopping_cart',
-		component: ShoppingCartComponent,
-		children: [
-			{ path: '', component: ProductListComponent },
-			{
-				path: 'products/:productId',
-				component: ProductDetailsComponent
-			},
-			{
-				path: 'cart',
-				component: CartComponent
-			},
-			{
-				path: 'shipping',
-				component: ShippingComponent
-			},
-    ],
-	},
+		loadChildren: () => import('src/app/shopping-cart/cart.module').then((mod) =>{
+			// console.log(mod);
+			return mod.CartModule;
+		}),
+	},	
 ];
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes)],
+  imports: [
+  	RouterModule.forRoot(
+  		routes,
+  		{
+		    // enableTracing: true, // <-- debugging purposes only
+		    preloadingStrategy: PreloadAllModules,
+		},
+  	)
+  ],
   exports: [RouterModule]
 })
 export class AppRoutingModule { }
