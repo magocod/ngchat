@@ -5,16 +5,15 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { NgModule } from '@angular/core';
 import { HttpClientModule } from '@angular/common/http';
 
-import { CartModule } from 'src/app/shopping-cart/cart.module';
-
 // root urls
 import { AppRoutingModule } from 'src/app/app-routing.module';
 
 // core app
 import { AppComponent } from 'src/app/app.component';
 
-import { ChatDashboardComponent } from './chat/chat-dashboard/chat-dashboard.component';
-import { ChatLayoutComponent } from './chat/chat-layout/chat-layout.component';
+// local modules
+import { CartModule } from 'src/app/shopping-cart/cart.module';
+import { ChatModule } from 'src/app/chat/chat.module';
 
 // auth
 import { LoginComponent } from './auth/login/login.component';
@@ -40,14 +39,13 @@ import {
     AppComponent,
     // auth
     LoginComponent,
-    ChatDashboardComponent,
-    ChatLayoutComponent,
   ],
   imports: [
+    // core angular
     BrowserModule,
+    BrowserAnimationsModule,
     HttpClientModule,
     ReactiveFormsModule,
-    BrowserAnimationsModule,
     // material
     MatToolbarModule,
     MatIconModule,
@@ -64,6 +62,7 @@ import {
     // local modules
     AppRoutingModule,
     CartModule,
+    ChatModule,
   ],
   providers: [],
   bootstrap: [
