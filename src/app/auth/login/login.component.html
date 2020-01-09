@@ -11,35 +11,72 @@
   </mat-toolbar-row>
 </mat-toolbar>
 
-<mat-card>
-  <mat-form-field>
-    <input
-      matInput
-      placeholder="Enter your email"
-      [formControl]="email"
-      required
-    >
-    <mat-error *ngIf="email.invalid">{{getErrorMessage()}}</mat-error>
-  </mat-form-field>
-  <mat-form-field>
-    <input
-      matInput
-      placeholder="Enter your password"
-      [type]="hide ? 'password' : 'text'"
-    >
-    <button
-      mat-icon-button
-      matSuffix (click)="hide = !hide"
-      [attr.aria-label]="'Hide password'"
-      [attr.aria-pressed]="hide"
-    >
-      <mat-icon>
-        {{hide ? 'visibility_off' : 'visibility'}}
-      </mat-icon>
-    </button>
-  </mat-form-field>
-</mat-card>
+<br><br><br><br><br>
 
-<a [routerLink]="['/shopping_cart']">
-  <h1>SHOPPING CART</h1>
-</a>
+<div class="row">
+  <div class="col-xs-1 col-sm-1 col-md-3"></div>
+  <div class="col-xs-10 col-sm-10 col-md-6">
+
+    <mat-toolbar color="primary">
+      <mat-toolbar-row>
+        <span>LOGIN</span>
+      </mat-toolbar-row>
+    </mat-toolbar>
+    <mat-card>
+
+      <div class="row">
+        <div class="col-xs-12 col-sm-6 col-md-6 example-container">
+          <mat-form-field>
+            <input
+              matInput
+              placeholder="Enter your email"
+              [formControl]="email"
+              required
+            >
+            <mat-error *ngIf="email.invalid">{{getErrorMessage()}}</mat-error>
+          </mat-form-field>
+        </div>
+        <div class="col-xs-12 col-sm-6 col-md-6 example-container">
+          <mat-form-field>
+            <input
+              matInput
+              placeholder="Enter your password"
+              [type]="hide ? 'password' : 'text'"
+            >
+            <button
+              mat-icon-button
+              matSuffix (click)="hide = !hide"
+              [attr.aria-label]="'Hide password'"
+              [attr.aria-pressed]="hide"
+            >
+              <mat-icon>
+                {{hide ? 'visibility_off' : 'visibility'}}
+              </mat-icon>
+            </button>
+          </mat-form-field>
+        </div>
+      </div>
+
+      <mat-card-actions>
+        <button
+          color="primary"
+          mat-raised-button
+          [routerLink]="['/chat']"
+        >
+          ENTER
+        </button>
+        <button color="warn" mat-raised-button>REGISTER</button>
+      </mat-card-actions>
+
+    </mat-card>
+  </div>
+  <div class="col-xs-1 col-sm-1 col-md-3"></div>
+</div>
+
+<button
+  [routerLink]="['/shopping_cart']"
+  mat-fab
+  color="primary"
+>
+  <mat-icon>shopping_cart</mat-icon>
+</button>

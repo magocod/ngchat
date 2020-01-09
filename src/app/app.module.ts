@@ -25,6 +25,8 @@ import {
 import { CartComponent } from 'src/app/shopping-cart//cart/cart.component';
 import { ShippingComponent } from 'src/app/shopping-cart//shipping/shipping.component';
 import { ShoppingCartComponent } from 'src/app/shopping-cart/shopping-cart.component';
+import { ChatDashboardComponent } from './chat/chat-dashboard/chat-dashboard.component';
+import { ChatLayoutComponent } from './chat/chat-layout/chat-layout.component';
 
 // auth
 import { LoginComponent } from './auth/login/login.component';
@@ -37,7 +39,12 @@ import {
   MatInputModule,
   MatCardModule,
   MatMenuModule,
-  MatButtonModule
+  MatButtonModule,
+  MatSidenavModule,
+  MatListModule,
+  MatTooltipModule,
+  MatExpansionModule,
+  MatTabsModule
 } from '@angular/material';
 
 @NgModule({
@@ -53,6 +60,8 @@ import {
     ShoppingCartComponent,
     // auth
     LoginComponent,
+    ChatDashboardComponent,
+    ChatLayoutComponent,
   ],
   imports: [
     BrowserModule,
@@ -67,7 +76,12 @@ import {
     MatInputModule,
     MatCardModule,
     MatMenuModule,
-    MatButtonModule
+    MatButtonModule,
+    MatSidenavModule,
+    MatListModule,
+    MatTooltipModule,
+    MatExpansionModule,
+    MatTabsModule
   ],
   providers: [],
   bootstrap: [
