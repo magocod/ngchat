@@ -9,7 +9,7 @@ const routes: Routes = [
 	{
 		path: 'chat',
 		loadChildren: () => import('src/app/chat/chat.module').then((mod) =>{
-			console.log(mod);
+			// console.log(mod);
 			return mod.ChatModule;
 		}),
 	},
