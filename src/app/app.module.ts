@@ -11,6 +11,9 @@ import { AppRoutingModule } from 'src/app/app-routing.module';
 // core app
 import { AppComponent } from 'src/app/app.component';
 
+// third party
+import { MaterialModule } from 'src/app/material.module';
+
 // local modules
 import { CartModule } from 'src/app/shopping-cart/cart.module';
 import { ChatModule } from 'src/app/chat/chat.module';
@@ -18,21 +21,7 @@ import { ChatModule } from 'src/app/chat/chat.module';
 // auth
 import { LoginComponent } from './auth/login/login.component';
 
-// angular material
-import {
-  MatToolbarModule,
-  MatIconModule,
-  MatFormFieldModule,
-  MatInputModule,
-  MatCardModule,
-  MatMenuModule,
-  MatButtonModule,
-  MatSidenavModule,
-  MatListModule,
-  MatTooltipModule,
-  MatExpansionModule,
-  MatTabsModule
-} from '@angular/material';
+
 
 @NgModule({
   declarations: [
@@ -46,19 +35,8 @@ import {
     BrowserAnimationsModule,
     HttpClientModule,
     ReactiveFormsModule,
-    // material
-    MatToolbarModule,
-    MatIconModule,
-    MatFormFieldModule,
-    MatInputModule,
-    MatCardModule,
-    MatMenuModule,
-    MatButtonModule,
-    MatSidenavModule,
-    MatListModule,
-    MatTooltipModule,
-    MatExpansionModule,
-    MatTabsModule,
+    // third party
+    MaterialModule,
     // local modules
     AppRoutingModule,
     CartModule,

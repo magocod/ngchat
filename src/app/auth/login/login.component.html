@@ -20,58 +20,88 @@
     <mat-toolbar color="primary">
       <mat-toolbar-row>
         <span>LOGIN</span>
+        <button mat-button [matMenuTriggerFor]="menu">USERS</button>
+        <mat-menu #menu="matMenu">
+          <button 
+            *ngFor="let example of example_users; index as userindex"
+            mat-menu-item
+            (click)="setUser(userindex)"
+          >
+            {{ example.email }} {{ example.password }}
+          </button>
+        </mat-menu>
       </mat-toolbar-row>
     </mat-toolbar>
-    <mat-card>
 
-      <div class="row">
-        <div class="col-xs-12 col-sm-6 col-md-6 example-container">
-          <mat-form-field>
-            <input
-              matInput
-              placeholder="Enter your email"
-              [formControl]="email"
-              required
-            >
-            <mat-error *ngIf="email.invalid">{{getErrorMessage()}}</mat-error>
-          </mat-form-field>
+    <form
+      [formGroup]="checkoutForm"
+      (ngSubmit)="onSubmit(checkoutForm)"
+    >
+      <mat-card>
+
+        <div class="row">
+          <div class="col-xs-12 col-sm-6 col-md-6 example-container">
+            <mat-form-field>
+              <input
+                matInput
+                placeholder="Enter your email"
+                [formControl]="email"
+                formControlName="email"
+                required
+              >
+              <mat-error *ngIf="email.invalid">{{getErrorMessage()}}</mat-error>
+            </mat-form-field>
+          </div>
+          <div class="col-xs-12 col-sm-6 col-md-6 example-container">
+            <mat-form-field>
+              <input
+                matInput
+                placeholder="Enter your password"
+                [type]="hide ? 'password' : 'text'"
+                [formControl]="password"
+                formControlName="password"
+                required
+              >
+              <button
+                mat-icon-button
+                matSuffix (click)="hide = !hide"
+                [attr.aria-label]="'Hide password'"
+                [attr.aria-pressed]="hide"
+              >
+                <mat-icon>
+                  {{hide ? 'visibility_off' : 'visibility'}}
+                </mat-icon>
+              </button>
+            </mat-form-field>
+          </div>
         </div>
-        <div class="col-xs-12 col-sm-6 col-md-6 example-container">
-          <mat-form-field>
-            <input
-              matInput
-              placeholder="Enter your password"
-              [type]="hide ? 'password' : 'text'"
-            >
-            <button
-              mat-icon-button
-              matSuffix (click)="hide = !hide"
-              [attr.aria-label]="'Hide password'"
-              [attr.aria-pressed]="hide"
-            >
-              <mat-icon>
-                {{hide ? 'visibility_off' : 'visibility'}}
-              </mat-icon>
-            </button>
-          </mat-form-field>
-        </div>
-      </div>
 
-      <mat-card-actions>
-        <button
-          color="primary"
-          mat-raised-button
-          [routerLink]="['/chat']"
-        >
-          ENTER
-        </button>
-        <button color="warn" mat-raised-button>REGISTER</button>
-      </mat-card-actions>
+        <mat-card-actions>
+          <button
+            color="primary"
+            mat-raised-button
+            type="submit"
+            [disabled]="!checkoutForm.valid"
+          >
+            ENTER
+          </button>
+          <!-- <button color="warn" mat-raised-button>REGISTER</button> -->
+        </mat-card-actions>
 
-    </mat-card>
+      </mat-card>
+    </form>
+
   </div>
   <div class="col-xs-1 col-sm-1 col-md-3"></div>
 </div>
+
+<button
+  [routerLink]="['/chat']"
+  mat-fab
+  color="primary"
+>
+  <mat-icon>chat</mat-icon>
+</button>
 
 <button
   [routerLink]="['/shopping_cart']"
