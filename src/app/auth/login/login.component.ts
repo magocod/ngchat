@@ -9,10 +9,7 @@ import {
 
 import { ToastrService } from 'ngx-toastr';
 
-interface IExampleCredentials {
-  email: string;
-  password: string;
-}
+import { AuthService, ICredentials } from 'src/app/user/services';
 
 @Component({
   selector: 'app-login',
@@ -21,16 +18,11 @@ interface IExampleCredentials {
 })
 export class LoginComponent implements OnInit {
 
-  exampleusers: IExampleCredentials[] = [
+  exampleusers: ICredentials[] = [
     { email: 'admin@django.com', password: '123' },
     { email: 'userstaff@django.com', password: '123' },
     { email: 'user@django.com', password: '123' },
   ];
-
-  credentials: IExampleCredentials = {
-    email: '',
-    password: '',
-  };
   hide = true;
 
   checkoutForm: FormGroup;
