@@ -14,6 +14,7 @@ export interface IDjangoUser {
   first_name: string;
   last_name: string;
   date_joined: string;
+  user_permissions: any[];
 }
 
 /**

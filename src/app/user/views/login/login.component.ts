@@ -9,13 +9,20 @@ import {
 
 import { ToastrService } from 'ngx-toastr';
 
-import { AuthService, ICredentials } from 'src/app/user/services';
+import {
+  AuthService,
+  ICredentials,
+  IDJTokenResponse
+} from 'src/app/user/services';
 
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.css']
 })
+/**
+ *
+ */
 export class LoginComponent implements OnInit {
 
   exampleusers: ICredentials[] = [
@@ -30,7 +37,8 @@ export class LoginComponent implements OnInit {
   constructor(
     private formBuilder: FormBuilder,
     private router: Router,
-    private toastr: ToastrService
+    private toastr: ToastrService,
+    private auth: AuthService,
   ) {
     this.checkoutForm = this.formBuilder.group({
       email: new FormControl('', [Validators.required, Validators.email]),
@@ -42,14 +50,23 @@ export class LoginComponent implements OnInit {
     this.setChangeValidate();
   }
 
+  /**
+   * [password description]
+   */
   get password() {
     return this.checkoutForm.get('password');
   }
 
+  /**
+   * [email description]
+   */
   get email() {
     return this.checkoutForm.get('email');
   }
 
+  /**
+   * [setChangeValidate description]
+   */
   setChangeValidate(): void {
     // console.log(this.checkoutForm);
     this.checkoutForm.get('email').valueChanges.subscribe(
@@ -64,15 +81,27 @@ export class LoginComponent implements OnInit {
     );
   }
 
+  /**
+   * [onSubmit description]
+   * @param {FormControl} form [description]
+   */
   onSubmit(form: FormControl): void {
     // Process checkout data here
     console.log(form);
     console.log(form.value);
-    this.checkoutForm.reset();
-    this.toastr.success('Hello world!', 'Toastr fun!');
-    this.router.navigateByUrl('/chat');
+    this.auth.login(form.value).subscribe((value: IDJTokenResponse) => {
+      console.log(value);
+      this.auth.setToken(value);
+      this.checkoutForm.reset();
+      this.toastr.success('...', 'Welcome');
+      this.router.navigateByUrl('/chat');
+    });
   }
 
+  /**
+   * [setUser description]
+   * @param {number} index [description]
+   */
   setUser(index: number): void {
     console.log(this.email);
     this.checkoutForm.get('email').setValue(

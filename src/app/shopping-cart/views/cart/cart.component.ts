@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { FormBuilder, FormGroup } from '@angular/forms';
 
 import { CartService } from 'src/app/shopping-cart/services';
@@ -14,6 +15,7 @@ export class CartComponent implements OnInit {
   checkoutForm: FormGroup;
 
   constructor(
+    private router: Router,
     private cartService: CartService,
     private formBuilder: FormBuilder,
   ) {
@@ -28,10 +30,13 @@ export class CartComponent implements OnInit {
     // this.items = this.cartService.getItems();
   }
 
+  redirect(): void {
+    this.router.navigate(['/shopping_cart/shipping']);
+  }
+
   onSubmit(customerData) {
     // Process checkout data here
     console.warn('Your order has been submitted', customerData);
-
     this.items = this.cartService.clearCart();
     this.checkoutForm.reset();
   }

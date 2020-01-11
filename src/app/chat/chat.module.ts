@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 
 // third party
 import { MaterialModule } from 'src/app/material.module';
+import { UserModule } from 'src/app/user';
 
 import { ChatRoutingModule } from 'src/app/chat/chat.routing.module';
 
@@ -20,6 +21,7 @@ import {
   imports: [
     CommonModule,
     ChatRoutingModule,
+    UserModule,
     // third party
     MaterialModule
   ],
