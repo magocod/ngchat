@@ -6,8 +6,11 @@ import { MaterialModule } from 'src/app/material.module';
 
 import { ChatRoutingModule } from 'src/app/chat/chat.routing.module';
 
-import { ChatDashboardComponent } from 'src/app/chat/chat-dashboard/chat-dashboard.component';
-import { ChatLayoutComponent } from 'src/app/chat/chat-layout/chat-layout.component';
+import {
+  ChatDashboardComponent,
+  ChatLayoutComponent
+} from 'src/app/chat/views';
+
 
 @NgModule({
   declarations: [

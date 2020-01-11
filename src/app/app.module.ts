@@ -17,17 +17,12 @@ import { ToastrModule } from 'ngx-toastr';
 
 // local modules
 import { CartModule } from 'src/app/shopping-cart/cart.module';
-import { ChatModule } from 'src/app/chat/chat.module';
-
-// auth
-import { LoginComponent } from './auth/login/login.component';
-
+import { ChatModule } from 'src/app/chat';
+import { UserModule } from 'src/app/user';
 
 @NgModule({
   declarations: [
     AppComponent,
-    // auth
-    LoginComponent,
   ],
   imports: [
     // core angular
@@ -44,6 +39,7 @@ import { LoginComponent } from './auth/login/login.component';
     AppRoutingModule,
     CartModule,
     ChatModule,
+    UserModule
   ],
   providers: [],
   bootstrap: [

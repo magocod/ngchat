@@ -2,7 +2,7 @@ import { NgModule } from '@angular/core';
 import { Routes, RouterModule, PreloadAllModules } from '@angular/router';
 
 // auth
-import { LoginComponent } from 'src/app/auth/login/login.component';
+import { LoginComponent } from 'src/app/user';
 
 const routes: Routes = [
   { path: '', component: LoginComponent },
