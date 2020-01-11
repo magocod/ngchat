@@ -13,6 +13,7 @@ import { AppComponent } from 'src/app/app.component';
 
 // third party
 import { MaterialModule } from 'src/app/material.module';
+import { ToastrModule } from 'ngx-toastr';
 
 // local modules
 import { CartModule } from 'src/app/shopping-cart/cart.module';
@@ -20,7 +21,6 @@ import { ChatModule } from 'src/app/chat/chat.module';
 
 // auth
 import { LoginComponent } from './auth/login/login.component';
-
 
 
 @NgModule({
@@ -37,6 +37,9 @@ import { LoginComponent } from './auth/login/login.component';
     ReactiveFormsModule,
     // third party
     MaterialModule,
+    ToastrModule.forRoot({
+      progressBar: true,
+    }),
     // local modules
     AppRoutingModule,
     CartModule,

@@ -7,6 +7,8 @@
 
 @import '@angular/material/prebuilt-themes/deeppurple-amber.css';
 
+@import '~ngx-toastr/toastr';
+
 body{
     margin: 0%;
 }

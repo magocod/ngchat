@@ -7,6 +7,8 @@ import {
   Validators
 } from '@angular/forms';
 
+import { ToastrService } from 'ngx-toastr';
+
 interface IExampleCredentials {
   email: string;
   password: string;
@@ -25,10 +27,6 @@ export class LoginComponent implements OnInit {
     { email: 'user@django.com', password: '123' },
   ]
 
-  // form
-	email: FormControl = new FormControl('', [Validators.required, Validators.email]);
-  password: FormControl = new FormControl('', [Validators.required]);
-
   credentials: IExampleCredentials = {
     email: '',
     password: '',
@@ -39,21 +37,25 @@ export class LoginComponent implements OnInit {
 
   constructor(
     private formBuilder: FormBuilder,
-    private router: Router
+    private router: Router,
+    private toastr: ToastrService
   ) {
     this.checkoutForm = this.formBuilder.group({
-      email: '',
-      password: '',
+      email: new FormControl('', [Validators.required, Validators.email]),
+      password: new FormControl('', [Validators.required]),
     });
   }
 
   ngOnInit() {
-    this.setChangeValidate()
+    this.setChangeValidate();
   }
 
-  getErrorMessage(): string {
-    return this.email.hasError('required') ? 'You must enter a value' :
-      this.email.hasError('email') ? 'Not a valid email' : '';
+  get password() {
+    return this.checkoutForm.get('password');
+  }
+
+  get email() {
+    return this.checkoutForm.get('email');
   }
 
   setChangeValidate(): void {
@@ -73,8 +75,10 @@ export class LoginComponent implements OnInit {
   onSubmit(form: FormControl): void {
     // Process checkout data here
     console.log(form);
-    // this.checkoutForm.reset();
-    // this.router.navigateByUrl('/chat');
+    console.log(form.value);
+    this.checkoutForm.reset();
+    this.toastr.success('Hello world!', 'Toastr fun!');
+    this.router.navigateByUrl('/chat');
   }
 
   setUser(index: number): void {
