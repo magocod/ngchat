@@ -19,6 +19,10 @@ import { ChatLayoutComponent } from 'src/app/chat/chat-layout/chat-layout.compon
     ChatRoutingModule,
     // third party
     MaterialModule
+  ],
+  exports: [
+    ChatDashboardComponent,
+    ChatLayoutComponent
   ]
 })
 export class ChatModule { }

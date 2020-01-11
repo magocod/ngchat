@@ -28,8 +28,8 @@ const routes: Routes = [
   		routes,
   		{
 		    // enableTracing: true, // <-- debugging purposes only
-		    preloadingStrategy: PreloadAllModules,
-		},
+		    // preloadingStrategy: PreloadAllModules,
+			},
   	)
   ],
   exports: [RouterModule]

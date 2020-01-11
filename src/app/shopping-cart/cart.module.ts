@@ -37,10 +37,20 @@ import { ShoppingCartComponent } from 'src/app/shopping-cart/shopping-cart.compo
   imports: [
     CommonModule,
     CartRoutingModule,
-    // HttpClientModule,
+    HttpClientModule,
     ReactiveFormsModule,
     // third party
     MaterialModule
-  ]
+  ],
+  exports: [
+    ShoppingCartComponent,
+    TopBarComponent,
+    ProductListComponent,
+    ProductAlertsComponent,
+    ProductDetailsComponent,
+    CartComponent,
+    ShippingComponent,
+    ShoppingCartComponent,
+  ],
 })
 export class CartModule { }
