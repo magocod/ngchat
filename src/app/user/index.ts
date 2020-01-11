@@ -1,2 +1,2 @@
 export * from './user.module';
-export * from './views';
+export * from './views/public-api';

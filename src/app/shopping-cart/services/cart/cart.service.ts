@@ -3,25 +3,27 @@ import { HttpClient } from '@angular/common/http';
 
 import { Observable, of } from 'rxjs';
 
+import { ICarProduct } from './interfaces';
+
 @Injectable({
     providedIn: 'root'
 })
 export class CartService {
-    items = [];
+    items: ICarProduct[] = [];
 
     constructor(
         private http: HttpClient
     ) { }
 
-    addToCart(product) {
+    addToCart(product: ICarProduct): void {
         this.items.push(product);
     }
 
-    getItems() {
+    getItems(): ICarProduct[] {
         return this.items;
     }
 
-    clearCart() {
+    clearCart(): ICarProduct[] {
         this.items = [];
         return this.items;
     }

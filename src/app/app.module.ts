@@ -16,7 +16,7 @@ import { MaterialModule } from 'src/app/material.module';
 import { ToastrModule } from 'ngx-toastr';
 
 // local modules
-import { CartModule } from 'src/app/shopping-cart/cart.module';
+import { CartModule } from 'src/app/shopping-cart';
 import { ChatModule } from 'src/app/chat';
 import { UserModule } from 'src/app/user';
 

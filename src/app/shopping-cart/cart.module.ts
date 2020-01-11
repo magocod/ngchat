@@ -7,21 +7,21 @@ import { HttpClientModule } from '@angular/common/http';
 // third party
 import { MaterialModule } from 'src/app/material.module';
 
-import { CartRoutingModule } from 'src/app/shopping-cart/cart.routing.module';
+import { CartRoutingModule } from './cart.routing.module';
 
-import { TopBarComponent } from 'src/app/shopping-cart/top-bar/top-bar.component';
 import {
-  ProductListComponent
-} from 'src/app/shopping-cart/product-list/product-list.component';
+  TopBarComponent,
+  ProductListComponent,
+  ProductDetailsComponent,
+  CartComponent,
+  ShippingComponent,
+  ShoppingCartComponent,
+} from 'src/app/shopping-cart/views';
+
 import {
-  ProductAlertsComponent
-} from 'src/app/shopping-cart/product-list/product-alerts/product-alerts.component';
-import {
-  ProductDetailsComponent
-} from 'src/app/shopping-cart/product-details/product-details.component';
-import { CartComponent } from 'src/app/shopping-cart//cart/cart.component';
-import { ShippingComponent } from 'src/app/shopping-cart//shipping/shipping.component';
-import { ShoppingCartComponent } from 'src/app/shopping-cart/shopping-cart.component';
+  ProductAlertsComponent,
+} from 'src/app/shopping-cart/components';
+
 
 @NgModule({
   declarations: [

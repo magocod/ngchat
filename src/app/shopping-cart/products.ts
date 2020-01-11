@@ -1,4 +1,6 @@
-export const products = [
+import { ICarProduct } from './services';
+
+export const products: ICarProduct[] = [
   {
     name: 'Phone XL',
     price: 799,
