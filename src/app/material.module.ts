@@ -17,33 +17,33 @@ import {
 } from '@angular/material';
 
 @NgModule({
-  imports: [ 
+  imports: [
     MatToolbarModule,
-	  MatIconModule,
-	  MatFormFieldModule,
-	  MatInputModule,
-	  MatCardModule,
-	  MatMenuModule,
-	  MatButtonModule,
-	  MatSidenavModule,
-	  MatListModule,
-	  MatTooltipModule,
-	  MatExpansionModule,
-	  MatTabsModule
+    MatIconModule,
+    MatFormFieldModule,
+    MatInputModule,
+    MatCardModule,
+    MatMenuModule,
+    MatButtonModule,
+    MatSidenavModule,
+    MatListModule,
+    MatTooltipModule,
+    MatExpansionModule,
+    MatTabsModule
   ],
   exports: [
     MatToolbarModule,
-	  MatIconModule,
-	  MatFormFieldModule,
-	  MatInputModule,
-	  MatCardModule,
-	  MatMenuModule,
-	  MatButtonModule,
-	  MatSidenavModule,
-	  MatListModule,
-	  MatTooltipModule,
-	  MatExpansionModule,
-	  MatTabsModule
+    MatIconModule,
+    MatFormFieldModule,
+    MatInputModule,
+    MatCardModule,
+    MatMenuModule,
+    MatButtonModule,
+    MatSidenavModule,
+    MatListModule,
+    MatTooltipModule,
+    MatExpansionModule,
+    MatTabsModule
   ],
 })
 export class MaterialModule {}

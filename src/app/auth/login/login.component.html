@@ -23,7 +23,7 @@
         <button mat-button [matMenuTriggerFor]="menu">USERS</button>
         <mat-menu #menu="matMenu">
           <button 
-            *ngFor="let example of example_users; index as userindex"
+            *ngFor="let example of exampleusers; index as userindex"
             mat-menu-item
             (click)="setUser(userindex)"
           >

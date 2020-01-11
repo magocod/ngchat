@@ -21,17 +21,17 @@ interface IExampleCredentials {
 })
 export class LoginComponent implements OnInit {
 
-  example_users: IExampleCredentials[] = [
+  exampleusers: IExampleCredentials[] = [
     { email: 'admin@django.com', password: '123' },
     { email: 'userstaff@django.com', password: '123' },
     { email: 'user@django.com', password: '123' },
-  ]
+  ];
 
   credentials: IExampleCredentials = {
     email: '',
     password: '',
-  }
-  hide: boolean = true;
+  };
+  hide = true;
 
   checkoutForm: FormGroup;
 
@@ -84,10 +84,10 @@ export class LoginComponent implements OnInit {
   setUser(index: number): void {
     console.log(this.email);
     this.checkoutForm.get('email').setValue(
-      this.example_users[index].email
+      this.exampleusers[index].email
     );
     this.checkoutForm.get('password').setValue(
-      this.example_users[index].password
+      this.exampleusers[index].password
     );
   }
 

@@ -5,18 +5,18 @@ import { ChatDashboardComponent } from 'src/app/chat/chat-dashboard/chat-dashboa
 import { ChatLayoutComponent } from 'src/app/chat/chat-layout/chat-layout.component';
 
 const routes: Routes = [
-	{
-		path: '',
-		component: ChatLayoutComponent,
-		children: [
-			{ path: '', component: ChatDashboardComponent },
-		]
-	},
+  {
+    path: '',
+    component: ChatLayoutComponent,
+    children: [
+      { path: '', component: ChatDashboardComponent },
+    ]
+  },
 ];
 
 @NgModule({
   imports: [
-  	RouterModule.forChild(routes)
+    RouterModule.forChild(routes)
   ],
   exports: [RouterModule]
 })

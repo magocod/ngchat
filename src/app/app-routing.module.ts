@@ -5,32 +5,32 @@ import { Routes, RouterModule, PreloadAllModules } from '@angular/router';
 import { LoginComponent } from 'src/app/auth/login/login.component';
 
 const routes: Routes = [
-	{ path: '', component: LoginComponent },
-	{
-		path: 'chat',
-		loadChildren: () => import('src/app/chat/chat.module').then((mod) =>{
-			// console.log(mod);
-			return mod.ChatModule;
-		}),
-	},
-	{ 
-		path: 'shopping_cart',
-		loadChildren: () => import('src/app/shopping-cart/cart.module').then((mod) =>{
-			// console.log(mod);
-			return mod.CartModule;
-		}),
-	},	
+  { path: '', component: LoginComponent },
+  {
+    path: 'chat',
+    loadChildren: () => import('src/app/chat/chat.module').then((mod) => {
+      // console.log(mod);
+      return mod.ChatModule;
+    }),
+  },
+  {
+    path: 'shopping_cart',
+    loadChildren: () => import('src/app/shopping-cart/cart.module').then((mod) => {
+      // console.log(mod);
+      return mod.CartModule;
+    }),
+  },
 ];
 
 @NgModule({
   imports: [
-  	RouterModule.forRoot(
-  		routes,
-  		{
-		    // enableTracing: true, // <-- debugging purposes only
-		    // preloadingStrategy: PreloadAllModules,
-			},
-  	)
+    RouterModule.forRoot(
+      routes,
+      {
+        // enableTracing: true, // <-- debugging purposes only
+        // preloadingStrategy: PreloadAllModules,
+      },
+    )
   ],
   exports: [RouterModule]
 })

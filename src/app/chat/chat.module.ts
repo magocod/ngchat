@@ -11,8 +11,8 @@ import { ChatLayoutComponent } from 'src/app/chat/chat-layout/chat-layout.compon
 
 @NgModule({
   declarations: [
-  	ChatDashboardComponent,
-  	ChatLayoutComponent
+    ChatDashboardComponent,
+    ChatLayoutComponent
   ],
   imports: [
     CommonModule,

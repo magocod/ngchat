@@ -10,25 +10,25 @@ import { CartService } from 'src/app/shopping-cart/services/cart/cart.service';
 })
 export class CartComponent implements OnInit {
 
-	items: any[];
-	checkoutForm: FormGroup;
+  items: any[];
+  checkoutForm: FormGroup;
 
-	constructor(
-	  private cartService: CartService,
-	  private formBuilder: FormBuilder,
-	) {
-		this.items = this.cartService.getItems();
+  constructor(
+    private cartService: CartService,
+    private formBuilder: FormBuilder,
+  ) {
+    this.items = this.cartService.getItems();
     this.checkoutForm = this.formBuilder.group({
       name: '',
       address: '',
     });
-	}
+  }
 
-	ngOnInit() {
-  	// this.items = this.cartService.getItems();
-	}
+  ngOnInit() {
+    // this.items = this.cartService.getItems();
+  }
 
-	onSubmit(customerData) {
+  onSubmit(customerData) {
     // Process checkout data here
     console.warn('Your order has been submitted', customerData);
 

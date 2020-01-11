@@ -5,7 +5,9 @@ import { CartService } from './cart.service';
 
 describe('CartService', () => {
   beforeEach(() => TestBed.configureTestingModule({
-  	imports: [HttpClientTestingModule],
+    imports: [
+      HttpClientTestingModule
+    ],
   }));
 
   it('should be created', () => {

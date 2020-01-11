@@ -25,8 +25,8 @@ import { ShoppingCartComponent } from 'src/app/shopping-cart/shopping-cart.compo
 
 @NgModule({
   declarations: [
-  	ShoppingCartComponent,
-  	TopBarComponent,
+    ShoppingCartComponent,
+    TopBarComponent,
     ProductListComponent,
     ProductAlertsComponent,
     ProductDetailsComponent,

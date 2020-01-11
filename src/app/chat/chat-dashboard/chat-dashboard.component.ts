@@ -12,7 +12,7 @@ export interface Section {
 })
 export class ChatDashboardComponent implements OnInit {
 
-	folders: Section[] = [
+  folders: Section[] = [
     {
       name: 'Photos',
       updated: new Date('1/1/16'),
@@ -26,6 +26,7 @@ export class ChatDashboardComponent implements OnInit {
       updated: new Date('1/28/16'),
     }
   ];
+
   notes: Section[] = [
     {
       name: 'Vacation Itinerary',
