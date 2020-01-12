@@ -13,7 +13,8 @@ import {
 	LoginComponent,
   UserBaseComponent,
   UserListComponent,
-  UserDetailsComponent
+  UserDetailsComponent,
+  UserCreateComponent
 } from 'src/app/user/views';
 
 import {
@@ -26,7 +27,8 @@ import {
     UserProfileComponent,
     UserBaseComponent,
     UserListComponent,
-    UserDetailsComponent
+    UserDetailsComponent,
+    UserCreateComponent
   ],
   imports: [
     CommonModule,
@@ -41,7 +43,8 @@ import {
     UserProfileComponent,
     UserBaseComponent,
     UserListComponent,
-    UserDetailsComponent
+    UserDetailsComponent,
+    UserCreateComponent
   ],
   providers: [
     { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true },

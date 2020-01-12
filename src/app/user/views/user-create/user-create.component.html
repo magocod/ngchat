@@ -1,1 +1,97 @@
-<p>user-create works!</p>
+
+<mat-toolbar>Create User</mat-toolbar>
+
+<form
+  [formGroup]="createForm"
+  (ngSubmit)="onSubmit()"
+>
+  <mat-card>
+
+    <div class="row">
+    	<div class="col-xs-12 col-sm-6 col-md-6 example-container">
+        <mat-form-field>
+          <input
+            matInput
+            placeholder="Username"
+            [formControl]="username"
+            formControlName="username"
+            required
+          >
+          <mat-error *ngIf="username.invalid">---</mat-error>
+        </mat-form-field>
+      </div>
+    	<div class="col-xs-12 col-sm-6 col-md-6 example-container">
+        <mat-form-field>
+          <input
+            matInput
+            placeholder="First name"
+            [formControl]="first_name"
+            formControlName="first_name"
+            required
+          >
+          <mat-error *ngIf="first_name.invalid">---</mat-error>
+        </mat-form-field>
+      </div>
+    	<div class="col-xs-12 col-sm-6 col-md-6 example-container">
+        <mat-form-field>
+          <input
+            matInput
+            placeholder="Last name"
+            [formControl]="last_name"
+            formControlName="last_name"
+            required
+          >
+          <mat-error *ngIf="last_name.invalid">---</mat-error>
+        </mat-form-field>
+      </div>
+      <div class="col-xs-12 col-sm-6 col-md-6 example-container">
+        <mat-form-field>
+          <input
+            matInput
+            placeholder="User email"
+            [formControl]="email"
+            formControlName="email"
+            required
+          >
+          <mat-error *ngIf="email.invalid">invalid email</mat-error>
+        </mat-form-field>
+      </div>
+      <div class="col-xs-12 col-sm-6 col-md-6 example-container">
+			 	<mat-form-field [formGroup]="createForm">
+		   		<mat-label>Is Staff</mat-label>
+		   		<mat-select formControlName="is_staff">
+  					<!-- <mat-option [value]="selected">NO</mat-option> -->
+  					<mat-option *ngFor="let tp of userStaff" [value]="tp.value">
+				      {{tp.viewValue}}
+				    </mat-option>
+				  </mat-select>
+			  </mat-form-field>
+			</div>
+      <div class="col-xs-12 col-sm-6 col-md-6 example-container">
+        <mat-form-field>
+          <input
+            matInput
+            placeholder="User password"
+            [type]="hide ? 'password' : 'text'"
+            [formControl]="password"
+            formControlName="password"
+            required
+          >
+        </mat-form-field>
+      </div>
+    </div>
+
+    <mat-card-actions>
+      <button
+        color="primary"
+        mat-raised-button
+        type="submit"
+        [disabled]="!createForm.valid"
+      >
+        CREATE
+      </button>
+      <!-- <button color="warn" mat-raised-button>REGISTER</button> -->
+    </mat-card-actions>
+
+  </mat-card>
+</form>

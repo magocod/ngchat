@@ -5,7 +5,8 @@ import {
 	LoginComponent,
 	UserBaseComponent,
   UserListComponent,
-  UserDetailsComponent
+  UserDetailsComponent,
+  UserCreateComponent
 } from 'src/app/user/views';
 
 const routes: Routes = [
@@ -18,6 +19,7 @@ const routes: Routes = [
         path: 'user/:userId',
         component: UserDetailsComponent
       },
+      { path: 'create', component: UserCreateComponent },
     ],
   },
 ];

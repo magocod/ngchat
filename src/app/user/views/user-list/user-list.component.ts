@@ -49,6 +49,13 @@ export class UserListComponent implements OnInit {
   }
 
   /**
+   * [createUser description]
+   */
+  createUser(): void {
+    this.router.navigate(['/chat/users/create/']);
+  }
+
+  /**
    * [editUser description]
    * @param {number} userid [description]
    */
