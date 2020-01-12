@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 
+import { ChatwebsocketService } from "src/app/chat/services";
 import { IDjangoUser } from 'src/app/user/services';
 
 export interface ISideBarItems {
@@ -30,7 +31,14 @@ export class ChatLayoutComponent implements OnInit {
 
   constructor(
   	private router: Router,
-  ) { }
+    private chatwebsocketservice: ChatwebsocketService,
+  ) {
+    this.chatwebsocketservice.messages.subscribe({
+      next: (v) => {
+        console.log(v);
+      }
+    });
+  }
 
   ngOnInit() {
   }
