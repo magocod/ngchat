@@ -2,6 +2,8 @@ import { HttpHeaders } from '@angular/common/http';
 
 import { environment } from 'src/environments/environment';
 
+import { throwError } from 'rxjs';
+
 export const DjChatHttpOptions = {
   headers: new HttpHeaders({
     'Content-Type': 'application/json',

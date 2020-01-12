@@ -6,9 +6,9 @@
  *
  */
 export enum RoomMethods {
-  UPSERT = 'U';
-  DELETE = 'D';
-  READ = 'R';
+  UPSERT = 'U',
+  DELETE = 'D',
+  READ = 'R',
 }
 
 /**
@@ -21,11 +21,11 @@ export type TypeRoomMethods = 'U' | 'D' | 'R';
  *
  */
 export enum MessageMethods {
-  CREATE = 'C';
-  DELETE = 'D';
-  READ = 'R';
-  EXIT = 'E'; // room
-  JOIN = 'J'; // room
+  CREATE = 'C',
+  DELETE = 'D',
+  READ = 'R',
+  EXIT = 'E', // room
+  JOIN = 'J', // room
 }
 
 /**
