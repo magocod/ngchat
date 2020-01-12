@@ -4,8 +4,10 @@ import { HttpClient } from '@angular/common/http';
 import { Observable, throwError } from 'rxjs';
 import { catchError } from 'rxjs/operators';
 
+import { ToastrService } from 'ngx-toastr';
+
 import { environment } from 'src/environments/environment';
-import { DjChatHttpOptions } from 'src/app/http-config';
+import { DjChatHttpOptions, handleError, notifyError } from 'src/app/http-config';
 
 import { ICredentials, IDJTokenResponse } from './interfaces';
 
@@ -39,6 +41,7 @@ export class AuthService {
 
   constructor(
     private http: HttpClient,
+    private toastr: ToastrService,
   ) { }
 
   /**
@@ -52,7 +55,8 @@ export class AuthService {
       credentials,
       this.httpOptions
     ).pipe(
-      catchError(this.handleError)
+      catchError(handleError),
+      notifyError(this.toastr)
     );
   }
 
@@ -66,7 +70,8 @@ export class AuthService {
       {},
       this.httpOptions
     ).pipe(
-      catchError(this.handleError)
+      catchError(handleError),
+      notifyError(this.toastr)
     );
   }
 
@@ -103,24 +108,6 @@ export class AuthService {
       }
     }
     return this.token;
-  }
-
-  /**
-   * [handleError description]
-   * @param {[type]} error [description]
-   */
-  handleError(error) {
-    let errorMessage = '';
-    if(error.error instanceof ErrorEvent) {
-      // Get client-side error
-      errorMessage = error.error.message;
-    } else {
-      // Get server-side error
-      errorMessage = `Error Code: ${error.status}\nMessage: ${error.message}`;
-    }
-    // window.alert(errorMessage);
-    console.log(errorMessage);
-    return throwError(errorMessage);
   }
 
 }

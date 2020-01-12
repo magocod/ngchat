@@ -11,6 +11,9 @@ import { MaterialModule } from 'src/app/material.module';
 
 import {
 	LoginComponent,
+  UserBaseComponent,
+  UserListComponent,
+  UserDetailsComponent
 } from 'src/app/user/views';
 
 import {
@@ -20,7 +23,10 @@ import {
 @NgModule({
   declarations: [
   	LoginComponent,
-    UserProfileComponent
+    UserProfileComponent,
+    UserBaseComponent,
+    UserListComponent,
+    UserDetailsComponent
   ],
   imports: [
     CommonModule,
@@ -32,7 +38,10 @@ import {
   ],
   exports: [
   	LoginComponent,
-    UserProfileComponent
+    UserProfileComponent,
+    UserBaseComponent,
+    UserListComponent,
+    UserDetailsComponent
   ],
   providers: [
     { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true },

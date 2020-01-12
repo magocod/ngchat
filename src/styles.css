@@ -5,6 +5,8 @@
 /*@import "./styles/flexbox/flexboxgrid.css";*/
 @import "./styles/flexbox/index.css";
 
+@import 'material-design-icons-iconfont/dist/material-design-icons.css';
+
 @import '@angular/material/prebuilt-themes/deeppurple-amber.css';
 
 @import '~ngx-toastr/toastr';

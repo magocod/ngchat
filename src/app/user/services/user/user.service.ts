@@ -4,8 +4,10 @@ import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { catchError } from 'rxjs/operators';
 
+import { ToastrService } from 'ngx-toastr';
+
 import { environment } from 'src/environments/environment';
-import { DjChatHttpOptions, handleError } from 'src/app/http-config';
+import { DjChatHttpOptions, handleError, notifyError } from 'src/app/http-config';
 
 import { IDjangoUserADD, IDjangoUser } from './interfaces';
 
@@ -22,6 +24,7 @@ export class UserService {
 
   constructor(
     private http: HttpClient,
+    private toastr: ToastrService,
   ) { }
 
   /**
@@ -30,10 +33,11 @@ export class UserService {
    */
   public getUsers(): Observable<IDjangoUser[]> {
     return this.http.get<IDjangoUser[]>(
-      '/users/',
+      `${this.apiURL}/users/`,
       this.httpOptions
     ).pipe(
-      catchError(handleError)
+      catchError(handleError),
+      notifyError(this.toastr)
     );
   }
 
@@ -44,10 +48,11 @@ export class UserService {
    */
   public getUser(id: number): Observable<IDjangoUser> {
     return this.http.get<IDjangoUser>(
-      `/user/${id.toString()}/`,
+      `${this.apiURL}/user/${id.toString()}/`,
       this.httpOptions
     ).pipe(
-      catchError(handleError)
+      catchError(handleError),
+      notifyError(this.toastr)
     );
   }
 
@@ -58,11 +63,12 @@ export class UserService {
    */
   public createUser(userdata: IDjangoUserADD): Observable<IDjangoUser> {
     return this.http.post<IDjangoUser>(
-      '/users/',
+      `${this.apiURL}/users/`,
       userdata,
       this.httpOptions
     ).pipe(
-      catchError(handleError)
+      catchError(handleError),
+      notifyError(this.toastr)
     );
   }
 
@@ -74,11 +80,12 @@ export class UserService {
    */
   public updateUser(userdata: IDjangoUserADD, id: number): Observable<IDjangoUser> {
     return this.http.put<IDjangoUser>(
-      `user/${id.toString()}/`,
+      `${this.apiURL}/user/${id.toString()}/`,
       userdata,
       this.httpOptions
     ).pipe(
-      catchError(handleError)
+      catchError(handleError),
+      notifyError(this.toastr)
     );
   }
 
@@ -88,8 +95,11 @@ export class UserService {
    * @return {Observable<any>}    [description]
    */
   public deleteUser(id: number): Observable<any> {
-    return this.http.delete(`user/${id.toString()}/`).pipe(
-      catchError(handleError)
+    return this.http.delete(
+      `${this.apiURL}/user/${id.toString()}/`
+    ).pipe(
+      catchError(handleError),
+      notifyError(this.toastr)
     );
   }
 

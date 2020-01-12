@@ -1,4 +1,10 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+
+import { Observable } from 'rxjs';
+
+import { UserService, IDjangoUser } from 'src/app/user/services';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-user-list',
@@ -7,9 +13,66 @@ import { Component, OnInit } from '@angular/core';
 })
 export class UserListComponent implements OnInit {
 
-  constructor() { }
+	displayedColumns: string[] = [
+		'id',
+		// 'username',
+		'email',
+		'is_staff',
+		'action'
+	];
+
+	dataSource: IDjangoUser[] = [];
+
+  constructor(
+  	private userservice: UserService,
+    private toastr: ToastrService,
+    private router: Router,
+  ) { }
 
   ngOnInit() {
+    // const observable: Observable<IDjangoUser[]> = this.userservice.getUsers();
+
+    // observable.subscribe({
+    //   next: (val) => console.log(val),
+    //   complete: () => console.log('Complete!'),
+    //   error: (val) => {
+    //     console.log(`observable Error: ${val}`);
+    //     this.toastr.error('observable', 'Error');
+    //   },
+    // });
+
+  	this.userservice.getUsers().subscribe((response) => {
+  		// console.log(response);
+  		this.dataSource = response;
+  	});
+
+  }
+
+  /**
+   * [editUser description]
+   * @param {number} userid [description]
+   */
+  editUser(userid: number): void {
+    this.router.navigate([
+      '/chat/users/user/',
+      userid
+    ]);
+  }
+
+  /**
+   * [deleteUser description]
+   * @param {number} id    [description]
+   * @param {number} index [description]
+   */
+  deleteUser(id: number, index: number) {
+    this.userservice.deleteUser(id).subscribe((response) => {
+      // this.dataSource.splice(index, 1);
+      this.dataSource = this.dataSource.filter((u: IDjangoUser, i: number) => {
+        if (i !== index) {
+          return u
+        }
+      })
+    })
   }
 
 }
