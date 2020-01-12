@@ -32,7 +32,7 @@ export class LoginComponent implements OnInit {
   ];
   hide = true;
 
-  checkoutForm: FormGroup;
+  checkoutForm: any;
 
   constructor(
     private formBuilder: FormBuilder,

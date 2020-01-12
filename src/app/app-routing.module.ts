@@ -8,17 +8,11 @@ const routes: Routes = [
   { path: '', component: LoginComponent },
   {
     path: 'chat',
-    loadChildren: () => import('src/app/chat/chat.module').then((mod) => {
-      // console.log(mod);
-      return mod.ChatModule;
-    }),
+    loadChildren: () => import('./chat/chat.module').then(mod => mod.ChatModule),
   },
   {
     path: 'shopping_cart',
-    loadChildren: () => import('src/app/shopping-cart/cart.module').then((mod) => {
-      // console.log(mod);
-      return mod.CartModule;
-    }),
+    loadChildren: () => import('./shopping-cart/cart.module').then(mod => mod.CartModule),
   },
 ];
 

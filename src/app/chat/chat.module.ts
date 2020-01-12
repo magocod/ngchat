@@ -8,15 +8,28 @@ import { UserModule } from 'src/app/user';
 import { ChatRoutingModule } from 'src/app/chat/chat.routing.module';
 
 import {
+  MessageCreateComponent,
+  MessageListComponent
+} from 'src/app/chat/components';
+
+import {
   ChatDashboardComponent,
-  ChatLayoutComponent
+  ChatLayoutComponent,
+  RoomCreateComponent,
+  RoomDetailsComponent,
+  RoomListComponent
 } from 'src/app/chat/views';
 
 
 @NgModule({
   declarations: [
     ChatDashboardComponent,
-    ChatLayoutComponent
+    ChatLayoutComponent,
+    RoomCreateComponent,
+    RoomDetailsComponent,
+    RoomListComponent,
+    MessageCreateComponent,
+    MessageListComponent
   ],
   imports: [
     CommonModule,
@@ -27,7 +40,12 @@ import {
   ],
   exports: [
     ChatDashboardComponent,
-    ChatLayoutComponent
+    ChatLayoutComponent,
+    RoomCreateComponent,
+    RoomDetailsComponent,
+    RoomListComponent,
+    MessageCreateComponent,
+    MessageListComponent
   ]
 })
 export class ChatModule { }

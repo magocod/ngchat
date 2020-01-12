@@ -25,7 +25,7 @@ export interface TypeUser {
 })
 export class UserCreateComponent implements OnInit {
 
-  createForm: FormGroup;
+  createForm: any;
 
   selected = false;
   userStaff: TypeUser[] = [

@@ -14,10 +14,7 @@ const routes: Routes = [
       { path: '', component: ChatDashboardComponent },
       {
         path: 'users',
-        loadChildren: () => import('src/app/user/user.module').then((mod) => {
-          // console.log(mod);
-          return mod.UserModule;
-        }),
+        loadChildren: () => import('src/app/user/user.module').then(mod => mod.UserModule),
       },
     ],
   },
