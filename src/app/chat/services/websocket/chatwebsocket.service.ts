@@ -28,11 +28,11 @@ export class ChatwebsocketService {
   constructor(
     private wsService: WebsocketService
   ) {
-    this.messages = this.wsService.connect(this.wsUrl).pipe(
-      map((response: MessageEvent): any => {
-        return JSON.parse(response.data);
-      })
-    );
+    // this.messages = this.wsService.connect(this.wsUrl).pipe(
+    //   map((response: MessageEvent): any => {
+    //     return JSON.parse(response.data);
+    //   })
+    // );
   }
 
   /**

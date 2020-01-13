@@ -33,11 +33,11 @@ export class ChatLayoutComponent implements OnInit {
     private router: Router,
     private chatwebsocketservice: ChatwebsocketService,
   ) {
-    this.chatwebsocketservice.messages.subscribe({
-      next: (v) => {
-        console.log(v);
-      },
-    });
+    // this.chatwebsocketservice.messages.subscribe({
+    //   next: (v) => {
+    //     console.log(v);
+    //   },
+    // });
   }
 
   ngOnInit() {

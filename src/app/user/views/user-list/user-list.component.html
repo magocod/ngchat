@@ -1,16 +1,17 @@
+<div style="height: 90vh;">
+  
 <div
   style="
-    z-index:5;
-    position : fixed;
-    display : flex; 
-    align-self : flex-end;
-    bottom : 10%;
-    margin-left: 90%;
-    margin-bottom : 15px;
+    z-index: 5;
+    position: absolute;
+    bottom: 5%;
+    right: 5%;
+    display: flex; 
+    align-self: flex-end;
   ">
   <a
     mat-fab
-    style="margin-right : 10%;"
+    style="margin-right: 10%;"
     matTooltip="USER CREATE"
     color="primary"
     (click)="createUser()"
@@ -19,7 +20,7 @@
   </a>
 </div>
 
-<table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+<table mat-table [dataSource]="dataSource" class="mat-elevation-z0">
  
   <!--- Note that these columns can be defined in any order.
   The actual rendered columns are set as a property on the row definition" -->
@@ -81,4 +82,5 @@
   <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
   <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
 </table>
+</div>
 
