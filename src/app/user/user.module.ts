@@ -10,7 +10,7 @@ import { AuthInterceptor } from './services';
 import { MaterialModule } from 'src/app/material.module';
 
 import {
-	LoginComponent,
+  LoginComponent,
   UserBaseComponent,
   UserListComponent,
   UserDetailsComponent,
@@ -23,7 +23,7 @@ import {
 
 @NgModule({
   declarations: [
-  	LoginComponent,
+    LoginComponent,
     UserProfileComponent,
     UserBaseComponent,
     UserListComponent,
@@ -39,7 +39,7 @@ import {
     MaterialModule
   ],
   exports: [
-  	LoginComponent,
+    LoginComponent,
     UserProfileComponent,
     UserBaseComponent,
     UserListComponent,

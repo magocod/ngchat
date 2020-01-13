@@ -83,7 +83,6 @@ export class LoginComponent implements OnInit {
 
   /**
    * [onSubmit description]
-   * @param {FormControl} form [description]
    */
   onSubmit(form: FormControl): void {
     // Process checkout data here
@@ -100,7 +99,6 @@ export class LoginComponent implements OnInit {
 
   /**
    * [setUser description]
-   * @param {number} index [description]
    */
   setUser(index: number): void {
     console.log(this.email);

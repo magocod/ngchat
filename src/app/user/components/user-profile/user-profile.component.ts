@@ -16,7 +16,7 @@ export class UserProfileComponent implements OnInit {
   email = 'Email';
 
   constructor(
-  	private router: Router,
+    private router: Router,
     private toastr: ToastrService,
     private auth: AuthService,
   ) { }

@@ -3,7 +3,7 @@ import { Component, OnInit } from '@angular/core';
 import {
   ChatwebsocketService,
   IChatRoom,
-} from "src/app/chat/services";
+} from 'src/app/chat/services';
 
 export interface Section {
   name: string;

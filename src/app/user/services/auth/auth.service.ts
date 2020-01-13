@@ -20,7 +20,7 @@ import { ICredentials, IDJTokenResponse } from './interfaces';
  */
 export class AuthService {
 
-  token: string = '';
+  token = '';
   apiURL: string = environment.chatapiurl;
   httpOptions = DjChatHttpOptions;
 
@@ -46,8 +46,6 @@ export class AuthService {
 
   /**
    * [login description]
-   * @param  {ICredentials}                 credentials [description]
-   * @return {Observable<IDJTokenResponse>}             [description]
    */
   login(credentials: ICredentials): Observable<IDJTokenResponse> {
     return this.http.post<IDJTokenResponse>(
@@ -62,7 +60,6 @@ export class AuthService {
 
   /**
    * [logout description]
-   * @return {Observable<any>} [description]
    */
   logout(): Observable<any> {
     return this.http.post<any>(
@@ -77,7 +74,6 @@ export class AuthService {
 
   /**
    * [setToken description]
-   * @param {IDJTokenResponse} payload [description]
    */
   setToken(payload: IDJTokenResponse): void {
     this.token = payload.token;
@@ -99,7 +95,6 @@ export class AuthService {
 
   /**
    * [getAuthorizationToken description]
-   * @return {string} [description]
    */
   getAuthorizationToken(): string {
     if (this.token === '') {

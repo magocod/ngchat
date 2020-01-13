@@ -9,7 +9,7 @@ import { TypeChatMethods } from './utils';
  *
  */
 export interface IChatSocketResponse {
-	method: TypeChatMethods;
+  method: TypeChatMethods;
 }
 
 /**
@@ -20,32 +20,32 @@ export interface ISuccessResponse<T> extends IChatSocketResponse {
 }
 
 /**
- * 
+ *
  */
 export interface ISocketExceptionResponse {
-	exception: string; 
+  exception: string;
 }
 
 /**
  *
  */
 export interface ISocketErrorResponse {
-	errors: any[] | ISocketExceptionResponse;
+  errors: any[] | ISocketExceptionResponse;
 }
 
 /**
  *
  */
 export interface IJoinRoomResponse {
-	join: number;
-	name: string;
+  join: number;
+  name: string;
 }
 
 /**
  *
  */
 export interface IMessageGroupResponse {
-	room: number;
+  room: number;
   username: string;
 }
 
@@ -53,5 +53,5 @@ export interface IMessageGroupResponse {
  *
  */
 export interface ILeaveRoomResponse {
-	leave: number;
+  leave: number;
 }

@@ -2,8 +2,8 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 
 import {
-	LoginComponent,
-	UserBaseComponent,
+  LoginComponent,
+  UserBaseComponent,
   UserListComponent,
   UserDetailsComponent,
   UserCreateComponent

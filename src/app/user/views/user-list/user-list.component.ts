@@ -13,18 +13,18 @@ import { ToastrService } from 'ngx-toastr';
 })
 export class UserListComponent implements OnInit {
 
-	displayedColumns: string[] = [
-		'id',
-		// 'username',
-		'email',
-		'is_staff',
-		'action'
-	];
+  displayedColumns: string[] = [
+    'id',
+    // 'username',
+    'email',
+    'is_staff',
+    'action'
+  ];
 
-	dataSource: IDjangoUser[] = [];
+  dataSource: IDjangoUser[] = [];
 
   constructor(
-  	private userservice: UserService,
+    private userservice: UserService,
     private toastr: ToastrService,
     private router: Router,
   ) { }
@@ -41,10 +41,10 @@ export class UserListComponent implements OnInit {
     //   },
     // });
 
-  	this.userservice.getUsers().subscribe((response) => {
-  		// console.log(response);
-  		this.dataSource = response;
-  	});
+    this.userservice.getUsers().subscribe((response) => {
+      // console.log(response);
+      this.dataSource = response;
+    });
 
   }
 
@@ -57,7 +57,6 @@ export class UserListComponent implements OnInit {
 
   /**
    * [editUser description]
-   * @param {number} userid [description]
    */
   editUser(userid: number): void {
     this.router.navigate([
@@ -68,18 +67,16 @@ export class UserListComponent implements OnInit {
 
   /**
    * [deleteUser description]
-   * @param {number} id    [description]
-   * @param {number} index [description]
    */
   deleteUser(id: number, index: number) {
     this.userservice.deleteUser(id).subscribe((response) => {
       // this.dataSource.splice(index, 1);
       this.dataSource = this.dataSource.filter((u: IDjangoUser, i: number) => {
         if (i !== index) {
-          return u
+          return u;
         }
-      })
-    })
+      });
+    });
   }
 
 }

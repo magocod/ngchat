@@ -16,7 +16,7 @@ export class AuthInterceptor implements HttpInterceptor {
 
     // console.log(AuthInterceptorExclude.includes(req.url))
     if (AuthInterceptorExclude.includes(req.url)) {
-      console.log('si')
+      // console.log('si');
       // pass
       return next.handle(req);
     }

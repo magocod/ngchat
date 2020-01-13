@@ -1,16 +1,16 @@
 import { Injectable } from '@angular/core';
 
-import { Observable, Subject } from "rxjs";
+import { Observable, Subject } from 'rxjs';
 import { map } from 'rxjs/operators';
 import {
   WebsocketService,
-} from "src/app/services";
+} from 'src/app/services';
 
 import {
   IChatRoom,
   IChatMessage,
   IRequestRoom
-} from "../chat";
+} from '../chat';
 
 import { environment } from 'src/environments/environment';
 
@@ -19,25 +19,24 @@ import { environment } from 'src/environments/environment';
 })
 export class ChatwebsocketService {
 
-	messages: any;
-	wsUrl: string = `${environment.chatws}/chat/`;
+  messages: any;
+  wsUrl = `${environment.chatws}/chat/`;
 
   rooms: IChatRoom[];
   listmessages: IChatMessage[];
 
   constructor(
-  	private wsService: WebsocketService
+    private wsService: WebsocketService
   ) {
-  	this.messages = this.wsService.connect(this.wsUrl).pipe(
-  		map((response: MessageEvent): any => {
-	        return JSON.parse(response.data);
-	    })
-    )
+    this.messages = this.wsService.connect(this.wsUrl).pipe(
+      map((response: MessageEvent): any => {
+        return JSON.parse(response.data);
+      })
+    );
   }
 
   /**
    * [getAuthorizationToken description]
-   * @return {string} [description]
    */
   getAuthorizationToken(): string {
     if (localStorage.getItem('token') !== null) {

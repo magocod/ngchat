@@ -37,7 +37,7 @@ export class UserDetailsComponent implements OnInit {
       ).subscribe((value: IDjangoUser) => {
         console.log(value);
         this.userDetails = value;
-      })
+      });
     });
   }
 

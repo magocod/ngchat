@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 
-import { ChatwebsocketService } from "src/app/chat/services";
+import { ChatwebsocketService } from 'src/app/chat/services';
 import { IDjangoUser } from 'src/app/user/services';
 
 export interface ISideBarItems {
@@ -19,18 +19,18 @@ export interface ISideBarItems {
 })
 export class ChatLayoutComponent implements OnInit {
 
-	items: ISideBarItems[] = [
-		{
+  items: ISideBarItems[] = [
+    {
       text: 'Users',
       icon: 'supervised_user_circle',
       href: '/chat/users',
       is_superuser: true,
       permissions: [],
     },
-	];
+  ];
 
   constructor(
-  	private router: Router,
+    private router: Router,
     private chatwebsocketservice: ChatwebsocketService,
   ) {
     this.chatwebsocketservice.messages.subscribe({
@@ -49,15 +49,13 @@ export class ChatLayoutComponent implements OnInit {
 
   /**
    * [redirect description]
-   * @param {string} route [description]
    */
   redirect(route: string) {
-  	this.router.navigate([route]);
+    this.router.navigate([route]);
   }
 
   /**
    * [filterOptions description]
-   * @return {ISideBarItems[]} [description]
    */
   filterOptions(): ISideBarItems[] {
     const user: IDjangoUser = JSON.parse(`${localStorage.getItem('user')}`);

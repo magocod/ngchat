@@ -16,7 +16,6 @@ export const DjChatHttpOptions = {
 
 /**
  * [authexclude description]
- * @type {string[]}
  */
 export const AuthInterceptorExclude: string[] = [
   `${environment.chatapiurl}/token-auth/`,
@@ -25,11 +24,10 @@ export const AuthInterceptorExclude: string[] = [
 
 /**
  * [handleError description]
- * @param {[type]} error [description]
  */
 export function handleError(error) {
   let errorMessage = '';
-  if(error.error instanceof ErrorEvent) {
+  if (error.error instanceof ErrorEvent) {
     // Get client-side error
     errorMessage = error.error.message;
   } else {
@@ -43,7 +41,6 @@ export function handleError(error) {
 
 /**
  * [notifyError description]
- * @param {ToastrService} instanceservice [description]
  */
 export function notifyError(instanceservice: ToastrService): OperatorFunction<any, any> {
   return (observable) => new Observable((observer: Subscriber<any>) => {
@@ -55,7 +52,7 @@ export function notifyError(instanceservice: ToastrService): OperatorFunction<an
       },
       error(err) {
         console.log('notifyerror:', err);
-        instanceservice.error('operatorFunction', `${err} Error`)
+        instanceservice.error('operatorFunction', `${err} Error`);
         observer.error(err);
       },
       complete() {
@@ -67,6 +64,6 @@ export function notifyError(instanceservice: ToastrService): OperatorFunction<an
     // Observable is unsubscribed from.
     return () => {
       subscription.unsubscribe();
-    }
+    };
   });
 }

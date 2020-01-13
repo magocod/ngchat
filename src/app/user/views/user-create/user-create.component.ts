@@ -40,10 +40,10 @@ export class UserCreateComponent implements OnInit {
     private userservice: UserService,
   ) {
     this.createForm = this.formBuilder.group({
-  		username: new FormControl('', [Validators.required]),
-  		first_name: new FormControl('', [Validators.required]),
-  		last_name: new FormControl('', [Validators.required]),
-  		is_staff: new FormControl(false, [Validators.required]),
+      username: new FormControl('', [Validators.required]),
+      first_name: new FormControl('', [Validators.required]),
+      last_name: new FormControl('', [Validators.required]),
+      is_staff: new FormControl(false, [Validators.required]),
       email: new FormControl('', [Validators.required, Validators.email]),
       password: new FormControl('', [Validators.required]),
     });
@@ -102,7 +102,7 @@ export class UserCreateComponent implements OnInit {
     // Process checkout data here
     console.log(this.createForm.value);
     this.userservice.createUser(
-    	this.createForm.value
+      this.createForm.value
     ).subscribe((value: IDjangoUser) => {
       console.log(value);
       this.createForm.reset();

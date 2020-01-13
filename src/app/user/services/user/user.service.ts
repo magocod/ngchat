@@ -29,7 +29,6 @@ export class UserService {
 
   /**
    * [getUsers description]
-   * @return {Observable<IDjangoUser[]>} [description]
    */
   public getUsers(): Observable<IDjangoUser[]> {
     return this.http.get<IDjangoUser[]>(
@@ -43,8 +42,6 @@ export class UserService {
 
   /**
    * [getUser description]
-   * @param  {number}                  id [description]
-   * @return {Observable<IDjangoUser>}    [description]
    */
   public getUser(id: number): Observable<IDjangoUser> {
     return this.http.get<IDjangoUser>(
@@ -58,8 +55,6 @@ export class UserService {
 
   /**
    * [createUser description]
-   * @param  {IDjangoUserADD}          userdata [description]
-   * @return {Observable<IDjangoUser>}          [description]
    */
   public createUser(userdata: IDjangoUserADD): Observable<IDjangoUser> {
     return this.http.post<IDjangoUser>(
@@ -74,9 +69,6 @@ export class UserService {
 
   /**
    * [updateUser description]
-   * @param  {IDjangoUserADD}          userdata [description]
-   * @param  {number}                  id       [description]
-   * @return {Observable<IDjangoUser>}          [description]
    */
   public updateUser(userdata: IDjangoUserADD, id: number): Observable<IDjangoUser> {
     return this.http.put<IDjangoUser>(
@@ -91,8 +83,6 @@ export class UserService {
 
   /**
    * [deleteUser description]
-   * @param  {number}          id [description]
-   * @return {Observable<any>}    [description]
    */
   public deleteUser(id: number): Observable<any> {
     return this.http.delete(
