@@ -1,6 +1,8 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 
+import { AuthGuard } from 'src/app/user/services';
+
 import {
   ChatDashboardComponent,
   ChatLayoutComponent
@@ -10,6 +12,7 @@ const routes: Routes = [
   {
     path: '',
     component: ChatLayoutComponent,
+    canActivateChild: [AuthGuard],
     children: [
       { path: '', component: ChatDashboardComponent },
       {

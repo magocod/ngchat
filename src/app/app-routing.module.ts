@@ -6,6 +6,7 @@ import { LoginComponent } from 'src/app/user';
 
 const routes: Routes = [
   { path: '', component: LoginComponent },
+  { path: 'login', component: LoginComponent },
   {
     path: 'chat',
     loadChildren: () => import('./chat/chat.module').then(mod => mod.ChatModule),

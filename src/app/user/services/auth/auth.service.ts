@@ -24,6 +24,9 @@ export class AuthService {
   apiURL: string = environment.chatapiurl;
   httpOptions = DjChatHttpOptions;
 
+  // store the URL so we can redirect after logging in
+  redirectUrl: string;
+
   // httpOptions = {
   //    headers: new HttpHeaders({
   //      'Content-Type': 'application/json',
@@ -103,6 +106,16 @@ export class AuthService {
       }
     }
     return this.token;
+  }
+
+  /**
+   * [isLoggedIn description]
+   */
+  isLoggedIn(): boolean {
+    if (localStorage.getItem('token') !== null) {
+      return true;
+    }
+    return false;
   }
 
 }
