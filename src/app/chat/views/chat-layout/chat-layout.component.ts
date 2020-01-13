@@ -36,11 +36,15 @@ export class ChatLayoutComponent implements OnInit {
     this.chatwebsocketservice.messages.subscribe({
       next: (v) => {
         console.log(v);
-      }
+      },
     });
   }
 
   ngOnInit() {
+  }
+
+  sendMsg() {
+    // pass
   }
 
   /**
@@ -51,6 +55,10 @@ export class ChatLayoutComponent implements OnInit {
   	this.router.navigate([route]);
   }
 
+  /**
+   * [filterOptions description]
+   * @return {ISideBarItems[]} [description]
+   */
   filterOptions(): ISideBarItems[] {
     const user: IDjangoUser = JSON.parse(`${localStorage.getItem('user')}`);
     if (user === null) {

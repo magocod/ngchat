@@ -2,7 +2,15 @@ import { Injectable } from '@angular/core';
 
 import { Observable, Subject } from "rxjs";
 import { map } from 'rxjs/operators';
-import { WebsocketService } from "src/app/services";
+import {
+  WebsocketService,
+} from "src/app/services";
+
+import {
+  IChatRoom,
+  IChatMessage,
+  IRequestRoom
+} from "../chat";
 
 import { environment } from 'src/environments/environment';
 
@@ -12,7 +20,10 @@ import { environment } from 'src/environments/environment';
 export class ChatwebsocketService {
 
 	messages: any;
-	wsUrl: string = environment.chatws;
+	wsUrl: string = `${environment.chatws}/chat/`;
+
+  rooms: IChatRoom[];
+  listmessages: IChatMessage[];
 
   constructor(
   	private wsService: WebsocketService
@@ -22,6 +33,17 @@ export class ChatwebsocketService {
 	        return JSON.parse(response.data);
 	    })
     )
+  }
+
+  /**
+   * [getAuthorizationToken description]
+   * @return {string} [description]
+   */
+  getAuthorizationToken(): string {
+    if (localStorage.getItem('token') !== null) {
+      return localStorage.getItem('token');
+    }
+    return '';
   }
 
 }

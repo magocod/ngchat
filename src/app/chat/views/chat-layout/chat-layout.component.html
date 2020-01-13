@@ -5,9 +5,11 @@
     </button>
   </div>
 
-  <a mat-button class="companyName" routerLink="/">
-    <span>NG-CHAT</span>
-  </a>
+  <button mat-button [matMenuTriggerFor]="menu">NG-CHAT</button>
+  <mat-menu #menu="matMenu">
+    <button routerLink="/" mat-menu-item>HOME</button>
+    <button (click)="sendMsg()" mat-menu-item>SOCKET</button>
+  </mat-menu>
 
   <span class="example-spacer"></span>
   <app-user-profile></app-user-profile>
