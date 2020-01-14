@@ -4,19 +4,70 @@
 >
   <mat-tab label="ROOMS">
   	<mat-list>
-		  <h3 mat-subheader>Folders</h3>
-		  <mat-list-item *ngFor="let folder of folders">
+		  <h3 mat-subheader>
+		  	<button
+		  		(click)="requestRooms()"
+		  		mat-mini-fab
+		  		aria-label="request room"
+		  		color="primary"
+		  	>
+			    <mat-icon>info</mat-icon>
+			  </button>
+			  &nbsp;&nbsp;
+		  	Available Rooms
+		  </h3>
+<!-- 		  <mat-list-item *ngFor="let room of rooms">
 		    <mat-icon mat-list-icon>chat</mat-icon>
-		    <h4 mat-line>{{folder.name}}</h4>
-		    <p mat-line> {{folder.updated | date}} </p>
-		  </mat-list-item>
-		  <mat-divider></mat-divider>
-		  <h3 mat-subheader>Notes</h3>
-		  <mat-list-item *ngFor="let note of notes">
-		    <mat-icon mat-list-icon>chat</mat-icon>
-		    <h4 mat-line>{{note.name}}</h4>
-		    <p mat-line> {{note.updated | date}} </p>
-		  </mat-list-item>
+		    <h4 mat-line>{{room.name}}</h4>
+		    <p mat-line> {{room.updated | date}} </p>
+		  </mat-list-item> -->
+		  <table mat-table [dataSource]="rooms" class="mat-elevation-z0">
+
+			  <!-- Position Column -->
+			  <ng-container matColumnDef="id">
+			    <th mat-header-cell *matHeaderCellDef> ID </th>
+			    <td mat-cell *matCellDef="let element"> {{element.id}} </td>
+			  </ng-container>
+
+			  <!-- Name Column -->
+			  <ng-container matColumnDef="name">
+			    <th mat-header-cell *matHeaderCellDef> NAME </th>
+			    <td mat-cell *matCellDef="let element"> {{element.name}} </td>
+			  </ng-container>
+
+			  <!-- Weight Column -->
+			  <ng-container matColumnDef="updated">
+			    <th mat-header-cell *matHeaderCellDef> UPDATED </th>
+			    <td mat-cell *matCellDef="let element"> {{element.updated | date}} </td>
+			  </ng-container>
+
+			  <!-- Actions -->
+			  <ng-container matColumnDef="action">
+			    <th mat-header-cell *matHeaderCellDef> ACTION </th>
+			    <td mat-cell *matCellDef="let element; let i = index">
+			      <button
+			        matTooltip="JOIN ROOM"
+			        mat-button
+			        color="primary"
+			        (click)="editUser(element.id)"
+			      >
+			        <mat-icon>record_voice_over</mat-icon>
+			      </button>
+			      <button
+			        matTooltip="DELETE ROOM"
+			        mat-button
+			        color="warn"
+			        (click)="deleteUser(element.id, i)"
+			      >
+			        <mat-icon>delete</mat-icon>
+			      </button>
+			    </td>
+			  </ng-container>
+
+			  <tr mat-header-row *matHeaderRowDef="roomdisplayedColumns"></tr>
+			  <tr mat-row *matRowDef="let row; columns: roomdisplayedColumns;"></tr>
+			</table>
+
 		</mat-list>
   </mat-tab>
   <mat-tab label="MESSAGES">---</mat-tab>

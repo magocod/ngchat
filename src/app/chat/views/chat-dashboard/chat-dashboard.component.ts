@@ -2,13 +2,10 @@ import { Component, OnInit } from '@angular/core';
 
 import {
   ChatwebsocketService,
+  RoomwebsocketService,
   IChatRoom,
+  IChatSocketResponse,
 } from 'src/app/chat/services';
-
-export interface Section {
-  name: string;
-  updated: Date;
-}
 
 @Component({
   selector: 'app-chat-dashboard',
@@ -17,38 +14,27 @@ export interface Section {
 })
 export class ChatDashboardComponent implements OnInit {
 
-  folders: Section[] = [
-    {
-      name: 'Photos',
-      updated: new Date('1/1/16'),
-    },
-    {
-      name: 'Recipes',
-      updated: new Date('1/17/16'),
-    },
-    {
-      name: 'Work',
-      updated: new Date('1/28/16'),
-    }
-  ];
-
-  notes: Section[] = [
-    {
-      name: 'Vacation Itinerary',
-      updated: new Date('2/20/16'),
-    },
-    {
-      name: 'Kitchen Remodel',
-      updated: new Date('1/18/16'),
-    }
-  ];
+  // rooms: IChatRoom[] = [];
+  roomdisplayedColumns: string[] = ['id', 'name', 'updated', 'action'];
 
   constructor(
     private chatwebsocketservice: ChatwebsocketService,
-  ) { }
+    private roomwebsocketservice: RoomwebsocketService
+  ) {
+
+  }
 
   ngOnInit() {
+    // this.rooms = this.roomwebsocketservice.rooms;
+  }
 
+  requestRooms() {
+    this.roomwebsocketservice.requestRooms();
+  }
+
+  get rooms() {
+    // console.log(this.roomwebsocketservice.getRooms());
+    return this.roomwebsocketservice.getRooms(); 
   }
 
 }

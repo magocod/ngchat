@@ -5,10 +5,47 @@
     </button>
   </div>
 
-  <button mat-button [matMenuTriggerFor]="menu">NG-CHAT</button>
-  <mat-menu #menu="matMenu">
-    <button routerLink="/" mat-menu-item>HOME</button>
-    <button (click)="sendMsg()" mat-menu-item>SOCKET</button>
+  <button mat-button [matMenuTriggerFor]="menu1">NG-CHAT</button>
+  <mat-menu #menu1="matMenu">
+    <button routerLink="/" mat-menu-item>
+      <mat-icon
+        aria-label="home"
+      >
+        home
+      </mat-icon>
+      HOME
+    </button>
+    <button mat-menu-item>
+      <mat-icon
+        aria-label="socket"
+      >
+        info
+      </mat-icon>
+      SOCKET
+    </button>
+  </mat-menu>
+
+  <button mat-button [matMenuTriggerFor]="menu2">SOCKET</button>
+  <mat-menu #menu2="matMenu">
+    <button mat-menu-item>
+      <mat-icon
+        color="{{ (roomSocket) ? 'primary' : 'warn' }}"
+        aria-label="s_room"
+      >
+        offline_bolt
+      </mat-icon>
+      ROOM
+      <!-- {{ roomSocket }} -->
+    </button>
+    <button mat-menu-item>
+      <mat-icon
+        color="{{ (chatSocket) ? 'primary' : 'warn' }}"
+        aria-label="s_room"
+      >
+        offline_bolt
+      </mat-icon>
+      CHAT
+    </button>
   </mat-menu>
 
   <span class="example-spacer"></span>

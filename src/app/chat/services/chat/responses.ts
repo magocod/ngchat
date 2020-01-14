@@ -8,14 +8,14 @@ import { TypeChatMethods } from './utils';
 /**
  *
  */
-export interface IChatSocketResponse {
+export interface ISocketResponse {
   method: TypeChatMethods;
 }
 
 /**
  *
  */
-export interface ISuccessResponse<T> extends IChatSocketResponse {
+export interface IChatSocketResponse<T> extends ISocketResponse {
   data: T;
 }
 

@@ -1,7 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 
-import { ChatwebsocketService } from 'src/app/chat/services';
+import {
+  ChatwebsocketService,
+  RoomwebsocketService,
+} from 'src/app/chat/services';
 import { IDjangoUser } from 'src/app/user/services';
 
 export interface ISideBarItems {
@@ -32,15 +35,26 @@ export class ChatLayoutComponent implements OnInit {
   constructor(
     private router: Router,
     private chatwebsocketservice: ChatwebsocketService,
+    private roomwebsocketservice: RoomwebsocketService
   ) {
     // this.chatwebsocketservice.messages.subscribe({
     //   next: (v) => {
     //     console.log(v);
     //   },
     // });
+    this.roomwebsocketservice.connect();
   }
 
   ngOnInit() {
+  }
+
+  get roomSocket(): boolean {
+    // console.log('socket chat', this.roomwebsocketservice.isConnected());
+    return this.roomwebsocketservice.isConnected();
+  }
+
+  get chatSocket(): boolean {
+    return false;
   }
 
   sendMsg() {
