@@ -93,4 +93,11 @@ export class ChatDashboardComponent implements OnInit {
     ]);
   }
 
+  /**
+   * [deleteMessage description]
+   */
+  deleteMessage(messageId: number, index: number): void {
+    // pass
+  }
+
 }
