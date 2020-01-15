@@ -8,6 +8,7 @@ import { TypeRoomMethods, TypeMessageMethods } from './utils';
  *
  */
 export interface IChatRoom {
+  id: number;
   name: string;
   updated: string;
   timestamp: string;
@@ -23,7 +24,15 @@ export interface IChatRoomCreate {
 /**
  *
  */
+export interface IDeleteMultipleRoom {
+  pk_list: number[];
+}
+
+/**
+ *
+ */
 export interface IChatMessage {
+  id: number;
   text: string;
   updated: string;
   timestamp: string;
@@ -50,7 +59,7 @@ export interface IRequestChat {
  */
 export interface IRequestRoom extends IRequestChat {
   method: TypeRoomMethods;
-  values: IChatRoomCreate;
+  values: IChatRoomCreate | IDeleteMultipleRoom;
 }
 
 /**

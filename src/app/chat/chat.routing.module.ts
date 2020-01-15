@@ -5,7 +5,8 @@ import { AuthGuard } from 'src/app/user/services';
 
 import {
   ChatDashboardComponent,
-  ChatLayoutComponent
+  ChatLayoutComponent,
+  RoomDetailsComponent,
 } from 'src/app/chat/views';
 
 const routes: Routes = [
@@ -15,6 +16,7 @@ const routes: Routes = [
     canActivateChild: [AuthGuard],
     children: [
       { path: '', component: ChatDashboardComponent },
+      { path: 'room/:roomId', component: RoomDetailsComponent },
       {
         path: 'users',
         loadChildren: () => import('src/app/user/user.module').then(mod => mod.UserModule),

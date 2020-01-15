@@ -40,7 +40,7 @@ export type TypeMessageBasicMethods = 'C' | 'D' | 'R';
 /**
  * [TypeMessageMethods description]
  */
-export type TypeMessageMethods = TypeMessageGroupMethods & TypeMessageBasicMethods;
+export type TypeMessageMethods = TypeMessageGroupMethods | TypeMessageBasicMethods;
 
 /**
  * [TypeChatMethods description]

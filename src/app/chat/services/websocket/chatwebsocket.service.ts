@@ -1,48 +1,79 @@
 import { Injectable } from '@angular/core';
 
-import { Observable, Subject } from 'rxjs';
-import { map } from 'rxjs/operators';
-import {
-  WebsocketService,
-} from 'src/app/services';
+import { fromEvent } from 'rxjs';
 
 import {
-  IChatRoom,
   IChatMessage,
-  IRequestRoom
+  IRequestMessage,
+  IChatSocketResponse
 } from '../chat';
+
+import {
+  WebsocketService
+} from 'src/app/services';
 
 import { environment } from 'src/environments/environment';
 
 @Injectable({
   providedIn: 'root'
 })
-export class ChatwebsocketService {
+export class ChatwebsocketService extends WebsocketService {
 
-  messages: any;
   wsUrl = `${environment.chatws}/chat/`;
+  messages: IChatMessage[] = [];
 
-  rooms: IChatRoom[];
-  listmessages: IChatMessage[];
+  /**
+   * [connect description]
+   */
+  connect(): void {
+    const socket = new WebSocket(this.wsUrl);
+    this.instance = socket;
 
-  constructor(
-    private wsService: WebsocketService
-  ) {
-    // this.messages = this.wsService.connect(this.wsUrl).pipe(
-    //   map((response: MessageEvent): any => {
-    //     return JSON.parse(response.data);
-    //   })
-    // );
+    socket.onopen = (event) => {
+      this.requestMessages(1);
+      console.log('conected function', event);
+    };
+
+    socket.onclose = (event) => {
+      console.log('disconected function', event);
+    };
+
+    this.observablemessage = fromEvent(socket, 'message');
+
+    this.observablemessage.subscribe((val: MessageEvent) => {
+      console.log('observable', val);
+      console.log('observable', JSON.parse(val.data));
+      const data: IChatSocketResponse<IChatMessage[]> = JSON.parse(val.data);
+      if (data.method === 'R') {
+        this.messages = data.data;
+      }
+    });
+
   }
 
   /**
-   * [getAuthorizationToken description]
+   * [requestRooms description]
    */
-  getAuthorizationToken(): string {
-    if (localStorage.getItem('token') !== null) {
-      return localStorage.getItem('token');
+  requestMessages(roomId: number): void {
+    if (this.isConnected()) {
+      const request: IRequestMessage = {
+        method: 'R',
+        token: this.auth.getAuthorizationToken(),
+        values: { text: '-', room_id: roomId }
+      };
+      this.instance.send(
+        JSON.stringify(request)
+      );
+    } else {
+      console.warn('socket is not connected');
     }
-    return '';
+  }
+
+  /**
+   * [getMessages description]
+   */
+  getMessages(): IChatMessage[] {
+    return this.messages;
   }
 
 }

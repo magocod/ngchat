@@ -37,11 +37,7 @@ export class ChatLayoutComponent implements OnInit {
     private chatwebsocketservice: ChatwebsocketService,
     private roomwebsocketservice: RoomwebsocketService
   ) {
-    // this.chatwebsocketservice.messages.subscribe({
-    //   next: (v) => {
-    //     console.log(v);
-    //   },
-    // });
+    this.chatwebsocketservice.connect();
     this.roomwebsocketservice.connect();
   }
 
@@ -49,12 +45,11 @@ export class ChatLayoutComponent implements OnInit {
   }
 
   get roomSocket(): boolean {
-    // console.log('socket chat', this.roomwebsocketservice.isConnected());
     return this.roomwebsocketservice.isConnected();
   }
 
   get chatSocket(): boolean {
-    return false;
+    return this.chatwebsocketservice.isConnected();
   }
 
   sendMsg() {

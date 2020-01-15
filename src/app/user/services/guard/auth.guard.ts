@@ -25,6 +25,7 @@ export class AuthGuard implements CanActivate, CanActivateChild {
     next: ActivatedRouteSnapshot,
     state: RouterStateSnapshot): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {
     console.log('AuthGuard#canActivate called');
+    // tslint:disable-next-line
     let url: string = state.url;
 
     return this.checkLogin(url);
@@ -49,5 +50,5 @@ export class AuthGuard implements CanActivate, CanActivateChild {
     this.router.navigate(['/login']);
     return false;
   }
-  
+
 }

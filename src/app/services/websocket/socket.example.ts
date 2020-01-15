@@ -15,15 +15,15 @@ export function exampleSocket() {
   };
 
   socket.onmessage = (event) => {
-    console.log('socket function', event)
-    console.log('socket function', JSON.parse(event.data))
-  }
+    console.log('socket function', event);
+    console.log('socket function', JSON.parse(event.data));
+  };
 
   const observablemessage = fromEvent(socket, 'message');
 
   observablemessage.subscribe((val: MessageEvent) => {
-    console.log('observable', val)
-    console.log('observable', JSON.parse(val.data))
+    console.log('observable', val);
+    console.log('observable', JSON.parse(val.data));
   });
 
   socket.onclose = (event) => {

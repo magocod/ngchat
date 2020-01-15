@@ -1,9 +1,11 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 
 import {
   ChatwebsocketService,
   RoomwebsocketService,
   IChatRoom,
+  IChatMessage,
   IChatSocketResponse,
 } from 'src/app/chat/services';
 
@@ -16,10 +18,19 @@ export class ChatDashboardComponent implements OnInit {
 
   // rooms: IChatRoom[] = [];
   roomdisplayedColumns: string[] = ['id', 'name', 'updated', 'action'];
+  selected = 0;
+  messagedisplayedColumns: string[] = [
+    'id',
+    'text',
+    'updated',
+    'room_id',
+    'action'
+  ];
 
   constructor(
     private chatwebsocketservice: ChatwebsocketService,
-    private roomwebsocketservice: RoomwebsocketService
+    private roomwebsocketservice: RoomwebsocketService,
+    private router: Router,
   ) {
 
   }
@@ -28,13 +39,58 @@ export class ChatDashboardComponent implements OnInit {
     // this.rooms = this.roomwebsocketservice.rooms;
   }
 
-  requestRooms() {
+  /**
+   * [requestRooms description]
+   */
+  requestRooms(): void {
     this.roomwebsocketservice.requestRooms();
   }
 
-  get rooms() {
+  /**
+   * [requestMessages description]
+   */
+  requestMessages(): void {
+    this.chatwebsocketservice.requestMessages(this.selected);
+  }
+
+  /**
+   * [rooms description]
+   */
+  get rooms(): IChatRoom[] {
     // console.log(this.roomwebsocketservice.getRooms());
-    return this.roomwebsocketservice.getRooms(); 
+    return this.roomwebsocketservice.getRooms();
+  }
+
+  /**
+   * [messages description]
+   */
+  get messages(): IChatMessage[] {
+    // console.log(this.roomwebsocketservice.getRooms());
+    return this.chatwebsocketservice.getMessages();
+  }
+
+  /**
+   * [deleteRoom description]
+   */
+  deleteRoom(roomId: number, index: number): void {
+    this.roomwebsocketservice.deleteRooms([roomId]);
+  }
+
+  /**
+   * [ramdomCreate description]
+   */
+  ramdomRoomCreate(): void {
+    this.roomwebsocketservice.requestRamdomCreate();
+  }
+
+  /**
+   * [editUser description]
+   */
+  joinRoom(roomId: number): void {
+    this.router.navigate([
+      '/chat/room/',
+      roomId
+    ]);
   }
 
 }

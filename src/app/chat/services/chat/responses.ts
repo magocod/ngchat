@@ -55,3 +55,11 @@ export interface IMessageGroupResponse {
 export interface ILeaveRoomResponse {
   leave: number;
 }
+
+/**
+ *
+ */
+export interface IDeleteRoomsResponse {
+  count: number;
+  pk_list: number[];
+}
