@@ -19,6 +19,8 @@ import { ToastrModule } from 'ngx-toastr';
 import { CartModule } from 'src/app/shopping-cart';
 import { ChatModule } from 'src/app/chat';
 import { UserModule } from 'src/app/user';
+import { ServiceWorkerModule } from '@angular/service-worker';
+import { environment } from '../environments/environment';
 
 @NgModule({
   declarations: [
@@ -39,7 +41,8 @@ import { UserModule } from 'src/app/user';
     AppRoutingModule,
     CartModule,
     ChatModule,
-    UserModule
+    UserModule,
+    ServiceWorkerModule.register('ngsw-worker.js', { enabled: environment.production })
   ],
   providers: [],
   bootstrap: [
