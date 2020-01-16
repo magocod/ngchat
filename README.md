@@ -5,6 +5,10 @@
 * https://ngchat-cbfe2.web.app/
 * https://ngchat-cbfe2.firebaseapp.com/
 
+## Back-end Server
+
+* https://github.com/magocod/dj_chat
+
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 8.3.21.
 
 ## Development server

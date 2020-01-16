@@ -96,6 +96,24 @@ export class RoomwebsocketService extends WebsocketService {
   }
 
   /**
+   * [requestCreate description]
+   */
+  requestCreate(roomName: string): void {
+    if (this.isConnected()) {
+      const request: IRequestRoom = {
+        method: 'U',
+        token: this.auth.getAuthorizationToken(),
+        values: { name: roomName }
+      };
+      this.instance.send(
+        JSON.stringify(request)
+      );
+    } else {
+      console.warn('socket is not connected');
+    }
+  }
+
+  /**
    * [requestRooms description]
    */
   deleteRooms(arrIds: number[]): void {
@@ -131,9 +149,17 @@ export class RoomwebsocketService extends WebsocketService {
         break;
 
       case 'U':
-        const temp = [...this.rooms];
-        temp.push(response.data as IChatRoom);
-        this.rooms = temp;
+        const value = response.data as IChatRoom;
+        const exist = this.rooms.map((room: IChatRoom) => {
+          return room.id;
+        }).includes(value.id);
+
+        if (exist === false) {
+          const temp = [...this.rooms];
+          temp.push(value);
+          this.rooms = temp;
+        }
+
         break;
 
       case 'D':

@@ -1,4 +1,5 @@
 import { NgModule } from '@angular/core';
+import { ReactiveFormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 
 // third party
@@ -16,6 +17,7 @@ import {
   ChatDashboardComponent,
   ChatLayoutComponent,
   RoomCreateComponent,
+  DialogRoomCreateDialog,
   RoomDetailsComponent,
   RoomListComponent
 } from 'src/app/chat/views';
@@ -26,13 +28,18 @@ import {
     ChatDashboardComponent,
     ChatLayoutComponent,
     RoomCreateComponent,
+    DialogRoomCreateDialog,
     RoomDetailsComponent,
     RoomListComponent,
     MessageCreateComponent,
     MessageListComponent
   ],
+  entryComponents: [
+    DialogRoomCreateDialog,
+  ],
   imports: [
     CommonModule,
+    ReactiveFormsModule,
     ChatRoutingModule,
     UserModule,
     // third party

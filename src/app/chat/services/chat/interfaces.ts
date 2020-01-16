@@ -50,6 +50,13 @@ export interface IChatMessageCreate {
 /**
  *
  */
+export interface IChatMessageDelete {
+  message_id: number;
+}
+
+/**
+ *
+ */
 export interface IRequestChat {
   token: string;
 }
@@ -67,5 +74,5 @@ export interface IRequestRoom extends IRequestChat {
  */
 export interface IRequestMessage extends IRequestChat {
   method: TypeMessageMethods;
-  values: IChatMessageCreate;
+  values: IChatMessageCreate | IChatMessageDelete;
 }

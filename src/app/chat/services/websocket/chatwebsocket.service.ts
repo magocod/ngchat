@@ -5,7 +5,8 @@ import { fromEvent } from 'rxjs';
 import {
   IChatMessage,
   IRequestMessage,
-  IChatSocketResponse
+  IChatSocketResponse,
+  ISocketErrorResponse
 } from '../chat';
 
 import {
@@ -13,6 +14,10 @@ import {
 } from 'src/app/services';
 
 import { environment } from 'src/environments/environment';
+
+type MeesageSocketResponse = IChatSocketResponse<
+  IChatMessage | IChatMessage[]  | ISocketErrorResponse
+>;
 
 @Injectable({
   providedIn: 'root'
@@ -43,10 +48,8 @@ export class ChatwebsocketService extends WebsocketService {
     this.observablemessage.subscribe((val: MessageEvent) => {
       console.log('observable', val);
       console.log('observable', JSON.parse(val.data));
-      const data: IChatSocketResponse<IChatMessage[]> = JSON.parse(val.data);
-      if (data.method === 'R') {
-        this.messages = data.data;
-      }
+      const data: MeesageSocketResponse = JSON.parse(val.data);
+      this.messageEvents(data);
     });
 
   }
@@ -70,10 +73,106 @@ export class ChatwebsocketService extends WebsocketService {
   }
 
   /**
+   * [createMessage description]
+   */
+  createMessage(messageText: string, roomId: number): void {
+    if (this.isConnected()) {
+      const request: IRequestMessage = {
+        method: 'C',
+        token: this.auth.getAuthorizationToken(),
+        values: { text: messageText, room_id: roomId }
+      };
+      this.instance.send(
+        JSON.stringify(request)
+      );
+    } else {
+      console.warn('socket is not connected');
+    }
+  }
+
+  deleteMessage(messageId: number): void {
+    if (this.isConnected()) {
+      const request: IRequestMessage = {
+        method: 'D',
+        token: this.auth.getAuthorizationToken(),
+        values: { message_id: messageId }
+      };
+      this.instance.send(
+        JSON.stringify(request)
+      );
+    } else {
+      console.warn('socket is not connected');
+    }
+  }
+
+  /**
    * [getMessages description]
    */
   getMessages(): IChatMessage[] {
     return this.messages;
+  }
+
+  joinRoom(roomId: number): void {
+    if (this.isConnected()) {
+      const request: IRequestMessage = {
+        method: 'J',
+        token: this.auth.getAuthorizationToken(),
+        values: { text: '', room_id: roomId }
+      };
+      this.instance.send(
+        JSON.stringify(request)
+      );
+    } else {
+      console.warn('socket is not connected');
+    }
+  }
+
+  /**
+   * [roomEvents description]
+   */
+  messageEvents(response: MeesageSocketResponse): void {
+    switch (response.method) {
+
+      case 'R':
+        this.messages = response.data as IChatMessage[];
+        break;
+
+      case 'C':
+        const value = response.data as IChatMessage;
+        const exist = this.messages.map((room: IChatMessage) => {
+          return room.id;
+        }).includes(value.id);
+
+        if (exist === false) {
+          const temp = [...this.messages];
+          temp.push(value);
+          this.messages = temp;
+        }
+
+        break;
+
+      case 'D':
+        const result = response.data as IChatMessage;
+        this.messages = this.messages.filter((room: IChatMessage) => {
+          if (room.id !== result.id) {
+            return room;
+          }
+        });
+        break;
+
+      case 'J':
+        console.log(response.data);
+        break;
+
+      case 'E':
+        console.log(response.data);
+        break;
+
+      default:
+        // errors or exceptions
+        // ...
+        break;
+    }
   }
 
 }
