@@ -15,6 +15,10 @@ const routes: Routes = [
     path: 'shopping_cart',
     loadChildren: () => import('./shopping-cart/cart.module').then(mod => mod.CartModule),
   },
+  {
+    path: 'workers',
+    loadChildren: () => import('./worker/worker.module').then(mod => mod.WorkerModule),
+  },
 ];
 
 @NgModule({
@@ -23,7 +27,7 @@ const routes: Routes = [
       routes,
       {
         // enableTracing: true, // <-- debugging purposes only
-        // preloadingStrategy: PreloadAllModules,
+        preloadingStrategy: PreloadAllModules,
       },
     )
   ],

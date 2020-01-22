@@ -1,0 +1,10 @@
+<mat-toolbar color="primary">
+  <mat-toolbar-row>
+  	<button mat-button [matMenuTriggerFor]="menu">NG-CHAT</button>
+		<mat-menu #menu="matMenu">
+		  <button mat-menu-item [routerLink]="['/']">LOGIN</button>
+		</mat-menu>
+
+    <span class="example-spacer"></span>
+  </mat-toolbar-row>
+</mat-toolbar>
