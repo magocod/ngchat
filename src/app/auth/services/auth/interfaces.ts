@@ -2,7 +2,7 @@
  * Django auth
  */
 
-import { IDjangoUser } from '../user/interfaces';
+import { IDjangoUser } from 'src/app/user';
 
 /**
  *

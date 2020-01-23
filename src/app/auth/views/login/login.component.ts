@@ -13,7 +13,7 @@ import {
   AuthService,
   ICredentials,
   IDJTokenResponse
-} from 'src/app/user/services';
+} from '../../services';
 
 @Component({
   selector: 'app-login',

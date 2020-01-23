@@ -2,13 +2,15 @@ import { NgModule } from '@angular/core';
 import { Routes, RouterModule, PreloadAllModules } from '@angular/router';
 
 // auth
-import { LoginComponent } from 'src/app/user';
+import { AuthGuard } from 'src/app/auth';
+import { LoginComponent } from 'src/app/auth';
 
 const routes: Routes = [
   { path: '', component: LoginComponent },
   { path: 'login', component: LoginComponent },
   {
     path: 'chat',
+    canActivateChild: [AuthGuard],
     loadChildren: () => import('./chat/chat.module').then(mod => mod.ChatModule),
   },
   {

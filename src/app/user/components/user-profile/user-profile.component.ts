@@ -3,7 +3,8 @@ import { Router } from '@angular/router';
 
 import { ToastrService } from 'ngx-toastr';
 
-import { AuthService, IDjangoUser } from 'src/app/user/services';
+import { AuthService } from 'src/app/auth';
+import { IDjangoUser } from 'src/app/user';
 
 @Component({
   selector: 'app-user-profile',
