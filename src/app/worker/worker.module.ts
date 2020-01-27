@@ -8,7 +8,7 @@ import { WorkerRoutingModule } from './worker.routing.module';
 
 @NgModule({
   declarations: [
-  	WorkerBaseComponent
+    WorkerBaseComponent
   ],
   imports: [
     CommonModule,

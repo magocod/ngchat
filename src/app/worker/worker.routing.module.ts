@@ -2,7 +2,7 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 
 import {
-	WorkerBaseComponent
+  WorkerBaseComponent
 } from './views/worker-base/worker-base.component';
 
 const routes: Routes = [

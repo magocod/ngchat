@@ -26,18 +26,18 @@ export class RoomDetailsComponent implements OnInit {
 
   constructor(
     private formBuilder: FormBuilder,
-  	private route: ActivatedRoute,
-  	private chatwebsocketservice: ChatwebsocketService,
+    private route: ActivatedRoute,
+    private chatwebsocketservice: ChatwebsocketService,
     private roomwebsocketservice: RoomwebsocketService,
   ) { }
 
   ngOnInit() {
-  	this.route.paramMap.subscribe((params) => {
-      this.roomId = parseInt(params.get('roomId'));
+    this.route.paramMap.subscribe((params) => {
+      this.roomId = parseInt(params.get('roomId'), 10);
       // esperar unirse a la sala
       this.chatwebsocketservice.joinRoom(this.roomId);
       this.requestMessages(
-      	this.roomId
+        this.roomId
       );
     });
     this.createForm = this.formBuilder.group({

@@ -7,6 +7,9 @@ import {
   Validators
 } from '@angular/forms';
 
+import { of } from 'rxjs';
+import { catchError, finalize } from 'rxjs/operators';
+
 import { ToastrService } from 'ngx-toastr';
 
 import {
@@ -31,6 +34,7 @@ export class LoginComponent implements OnInit {
     { email: 'user@django.com', password: '123' },
   ];
   hide = true;
+  loading = false;
 
   checkoutForm: any;
 
@@ -88,13 +92,37 @@ export class LoginComponent implements OnInit {
     // Process checkout data here
     console.log(form);
     console.log(form.value);
-    this.auth.login(form.value).subscribe((value: IDJTokenResponse) => {
-      console.log(value);
-      this.auth.setToken(value);
-      this.checkoutForm.reset();
-      this.toastr.success('...', 'Welcome');
-      this.router.navigateByUrl('/chat');
+
+    this.loading = true;
+
+    const $loading = this.auth.login(form.value).pipe(
+      catchError((err) => {
+        return of(err);
+      }),
+      finalize(() => {
+        this.loading = false;
+      })
+    );
+
+    $loading.subscribe((value: IDJTokenResponse) => {
+      if (typeof value !== 'string') {
+        console.log(value);
+        this.auth.setToken(value);
+        this.checkoutForm.reset();
+        this.toastr.success('...', 'Welcome');
+        this.router.navigateByUrl('/chat');
+      } else {
+        console.log(value);
+      }
     });
+
+    // this.auth.loginJwtHs(form.value).subscribe((value: string) => {
+    //   const decodetoken = value;
+    //   console.log('decode-token', decodetoken);
+    //   const data = this.auth.parseJwt(decodetoken);
+    //   console.log(data);
+    // });
+
   }
 
   /**

@@ -15,7 +15,7 @@ import { LoginComponent } from './views';
 
 @NgModule({
   declarations: [
-  	LoginComponent,
+    LoginComponent,
   ],
   imports: [
     CommonModule,
@@ -24,7 +24,7 @@ import { LoginComponent } from './views';
     MaterialModule
   ],
   exports: [
-  	LoginComponent
+    LoginComponent
   ],
   providers: [
     { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true },

@@ -19,6 +19,7 @@ export const DjChatHttpOptions = {
  */
 export const AuthInterceptorExclude: string[] = [
   `${environment.chatapiurl}/token-auth/`,
+  `${environment.chatapiurl}/jwt-auth/`,
   `${environment.chatapiurl}/email/`,
 ];
 

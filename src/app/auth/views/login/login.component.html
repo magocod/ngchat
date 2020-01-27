@@ -81,13 +81,13 @@
             color="primary"
             mat-raised-button
             type="submit"
-            [disabled]="!checkoutForm.valid"
+            [disabled]="!checkoutForm.valid || loading"
           >
             ENTER
           </button>
           <!-- <button color="warn" mat-raised-button>REGISTER</button> -->
         </mat-card-actions>
-
+        <mat-progress-bar *ngIf="loading" mode="indeterminate"></mat-progress-bar>
       </mat-card>
     </form>
 
