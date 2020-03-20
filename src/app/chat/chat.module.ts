@@ -17,7 +17,7 @@ import {
   ChatDashboardComponent,
   ChatLayoutComponent,
   RoomCreateComponent,
-  DialogRoomCreateDialog,
+  DialogRoomCreateDialogComponent,
   RoomDetailsComponent,
   RoomListComponent
 } from 'src/app/chat/views';
@@ -28,14 +28,14 @@ import {
     ChatDashboardComponent,
     ChatLayoutComponent,
     RoomCreateComponent,
-    DialogRoomCreateDialog,
+    DialogRoomCreateDialogComponent,
     RoomDetailsComponent,
     RoomListComponent,
     MessageCreateComponent,
     MessageListComponent
   ],
   entryComponents: [
-    DialogRoomCreateDialog,
+    DialogRoomCreateDialogComponent,
   ],
   imports: [
     CommonModule,

@@ -34,7 +34,7 @@ export class RoomCreateComponent implements OnInit {
    * [openDialog description]
    */
   openDialog() {
-    const dialogRef = this.dialog.open(DialogRoomCreateDialog, {
+    const dialogRef = this.dialog.open(DialogRoomCreateDialogComponent, {
       data: { title: 'Room Create' },
     });
 
@@ -46,18 +46,18 @@ export class RoomCreateComponent implements OnInit {
 }
 
 @Component({
-  selector: 'dialog-room-create-dialog',
+  selector: 'app-dialog-room-create-dialog',
   templateUrl: 'dialog-room-create.dialog.html',
   styleUrls: ['./room-create.component.css']
 })
-export class DialogRoomCreateDialog {
+export class DialogRoomCreateDialogComponent {
 
   createForm: any;
 
   constructor(
     private formBuilder: FormBuilder,
     private roomwebsocketservice: RoomwebsocketService,
-    public dialogRef: MatDialogRef<DialogRoomCreateDialog>,
+    public dialogRef: MatDialogRef<DialogRoomCreateDialogComponent>,
     @Inject(MAT_DIALOG_DATA) public data: DialogData,
   ) {
     this.createForm = this.formBuilder.group({
