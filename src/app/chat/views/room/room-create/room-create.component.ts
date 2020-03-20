@@ -19,7 +19,7 @@ interface DialogData {
 @Component({
   selector: 'app-room-create',
   templateUrl: './room-create.component.html',
-  styleUrls: ['./room-create.component.css']
+  styleUrls: ['./room-create.component.scss']
 })
 export class RoomCreateComponent implements OnInit {
 
@@ -48,7 +48,7 @@ export class RoomCreateComponent implements OnInit {
 @Component({
   selector: 'app-dialog-room-create-dialog',
   templateUrl: 'dialog-room-create.dialog.html',
-  styleUrls: ['./room-create.component.css']
+  styleUrls: ['./room-create.component.scss']
 })
 export class DialogRoomCreateDialogComponent {
 

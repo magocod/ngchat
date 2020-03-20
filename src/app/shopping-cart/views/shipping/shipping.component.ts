@@ -4,7 +4,7 @@ import { CartService } from 'src/app/shopping-cart/services';
 @Component({
   selector: 'app-shipping',
   templateUrl: './shipping.component.html',
-  styleUrls: ['./shipping.component.css']
+  styleUrls: ['./shipping.component.scss']
 })
 export class ShippingComponent implements OnInit {
   shippingCosts;
